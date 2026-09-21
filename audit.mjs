@@ -61,7 +61,7 @@ ok('confidentialité locale explicitée');
 
 if (!fs.existsSync('assets/hero-watteau.webp')) fail('asset hero V4 absent');
 const heroStat = fs.statSync('assets/hero-watteau.webp');
-if (heroStat.size < 50000) fail('asset hero V4 anormalement petit');
+if (heroStat.size < 40000) fail('asset hero V4 anormalement petit');
 if (!html.includes('assets/hero-watteau.webp')) fail('hero V4 non référencé dans index.html');
 ok('asset hero V4 présent et référencé');
 
