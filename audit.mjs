@@ -24,7 +24,7 @@ for (const m of html.matchAll(/data-target="([^"]+)"/g)) {
 }
 ok('navigation interne cohérente');
 
-const steps = [...html.matchAll(/<section class="step" id="step(\d)" data-step="\1"/g)].map(m => Number(m[1]));
+const steps = [...html.matchAll(/<section class="[^"]*\bstep\b[^"]*" id="step(\d)" data-step="\1"/g)].map(m => Number(m[1]));
 if (steps.join(',') !== '1,2,3,4,5,6,7') fail('les 7 étapes ne sont pas présentes dans l’ordre');
 ok('7 étapes pédagogiques présentes');
 
