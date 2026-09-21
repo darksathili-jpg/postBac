@@ -70,7 +70,8 @@ for (const [path, minSize] of visualAssets) {
   if (fs.statSync(path).size < minSize) fail('asset visuel anormalement petit: ' + path);
   if (!html.includes(path)) fail('asset visuel non référencé dans index.html: ' + path);
 }
-if (html.includes("$('.site-nav a').forEach")) fail('sélecteur JS incorrect sur la navigation');
+if (/(?<!\\$)\\$\\('\.site-nav a'\\)\.forEach/.test(html)) fail('sélecteur JS incorrect sur la navigation');
+if (!html.includes("$('.site-nav a').forEach")) fail('navigation V5 non initialisée avec querySelectorAll');
 if (html.includes("assets/hero-watteau.webp")) fail('ancien hero V4 encore référencé');
 ok('assets V5 présents, référencés et navigation JS cohérente');
 
