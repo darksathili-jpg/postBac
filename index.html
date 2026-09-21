@@ -980,8 +980,8 @@ function bindCounter(inputId,countId,max){
   el.addEventListener('input',draw);draw();
 }
 bindCounter('#startingPoint','#startingPointCount',500);
-$('.site-nav a').forEach(function(a){a.addEventListener('click',function(){
-  $('.site-nav a').forEach(function(x){x.classList.remove('active')});a.classList.add('active');
+$$('.site-nav a').forEach(function(a){a.addEventListener('click',function(){
+  $$('.site-nav a').forEach(function(x){x.classList.remove('active')});a.classList.add('active');
 })});
 function bindPills(id,key){$(id).querySelectorAll('.pill').forEach(function(b){if(state.selected[key].indexOf(b.textContent)>=0)b.setAttribute('aria-pressed','true');else b.setAttribute('aria-pressed','false');b.onclick=function(){var on=b.getAttribute('aria-pressed')==='true';b.setAttribute('aria-pressed',on?'false':'true');var arr=state.selected[key];var text=b.textContent;if(on)state.selected[key]=arr.filter(function(x){return x!==text});else if(arr.indexOf(text)<0)arr.push(text);save()}})}
 bindPills('#interests','interests');bindPills('#conditions','conditions');
