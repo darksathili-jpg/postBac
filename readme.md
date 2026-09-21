@@ -1,1 +1,0 @@
-Cette ressource est un support d’éducation à l’orientation. Elle ne remplace ni le dialogue avec l’équipe éducative et le Psy‑EN, ni les informations officielles actualisées. Les réponses des élèves ne sont pas transmises à un serveur.
