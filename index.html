@@ -200,9 +200,77 @@ footer{max-width:var(--max);margin:0 auto;padding:0 28px 48px;color:#9fb2c1;font
 @media(max-width:520px){.brand-copy strong{font-size:.86rem}.timer strong{font-size:.96rem}.hero-art{min-height:250px}.meta{gap:6px}.meta span{font-size:.69rem;padding:6px 8px}.navsteps{grid-template-columns:1fr 1fr}.pulse{grid-template-columns:1fr}.quiztop{display:block}.quizactions{margin-top:9px}.sources{display:grid}.sources a{text-align:center;justify-content:center}.complete{width:100%;min-width:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
 @media print{body{background:#fff!important;color:#111!important}.topbar,.hero,.official,.sidebar,.teacher,.complete,footer,.summaryactions{display:none!important}.layout{display:block;max-width:none;padding:0}.step{break-inside:avoid;background:#fff!important;color:#111!important;border:1px solid #999!important;box-shadow:none}.step h2,.field label{color:#111!important}.field input,.field textarea{background:#fff!important;color:#111!important;border:1px solid #aaa!important}.summary{display:block!important;background:#fff!important;color:#111!important;border:1px solid #777!important}}
+
+/* =========================================================
+   V4 — VISUAL FIDELITY BUILD · premier écran verrouillé
+   ========================================================= */
+:root{--v4-gold:#ffd33d;--v4-gold-deep:#d99808;--v4-red:#d91f37;--v4-night:#020f1b;--v4-panel:#031d31;--v4-blue:#0d3b5d;--v4-ice:#d9edfa}
+body{
+  background:
+    radial-gradient(circle at 14% 18%,rgba(20,93,140,.15),transparent 30rem),
+    radial-gradient(circle at 95% 68%,rgba(216,31,55,.13),transparent 31rem),
+    radial-gradient(circle,rgba(111,186,226,.12) 1px,transparent 1.2px),
+    linear-gradient(135deg,#020d18 0%,#031522 48%,#020c16 100%);
+  background-size:auto,auto,9px 9px,auto;
+}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(118deg,transparent 0 78%,rgba(216,31,55,.08) 78% 80%,transparent 80%),linear-gradient(160deg,transparent 0 9%,rgba(255,211,61,.035) 9% 10%,transparent 10%)}
+.topbar{background:rgba(2,15,27,.965);border-bottom:1px solid rgba(255,211,61,.62);box-shadow:0 8px 28px rgba(0,0,0,.38)}
+.topbar-inner{max-width:1540px;min-height:70px;padding:6px 28px;gap:22px}
+.brand{gap:13px;flex-shrink:0}.brand-logo{width:86px;height:56px}.brand-logo svg{width:86px;height:56px}.brand-copy strong{font-size:1.08rem;font-weight:900}.brand-copy span{font-size:.72rem}.brand:after{height:44px;background:var(--v4-gold)}
+.site-nav{display:flex;align-items:stretch;gap:25px;margin-left:12px;height:70px}
+.site-nav a{position:relative;display:flex;align-items:center;color:#e7f0f6;text-decoration:none;font-size:.8rem;font-weight:750;padding:0 2px}
+.site-nav a:after{content:"";position:absolute;left:0;right:100%;bottom:9px;height:3px;background:var(--v4-gold);box-shadow:0 0 12px rgba(255,211,61,.55);transition:right .2s ease}
+.site-nav a:hover,.site-nav a.active{color:var(--v4-gold)}.site-nav a:hover:after,.site-nav a.active:after{right:0}
+.top-actions{gap:9px}.ctrl,.timer{border-color:#6c8ba1;border-radius:10px;background:linear-gradient(180deg,#08253b,#041726);box-shadow:inset 0 1px rgba(255,255,255,.08),0 6px 14px rgba(0,0,0,.28)}
+.timer{padding:7px 11px}.timer strong{font-size:1.08rem}.ctrl{font-weight:750;padding:8px 11px}
+
+.hero-v4{max-width:1540px;padding:12px 24px 0}
+.hero-card-v4{min-height:410px;display:block;border-radius:2px;border:1px solid rgba(255,211,61,.7);background:#061b2d;box-shadow:0 28px 65px rgba(0,0,0,.46);isolation:isolate}
+.hero-card-v4:before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(2,14,25,.995) 0%,rgba(3,20,34,.98) 20%,rgba(3,20,34,.83) 36%,rgba(3,20,34,.22) 55%,transparent 68%),linear-gradient(180deg,transparent 65%,rgba(2,14,25,.5) 100%);pointer-events:none}
+.hero-card-v4:after{height:6px;z-index:8;background:linear-gradient(90deg,var(--v4-red) 0 30%,var(--v4-gold) 30% 61%,var(--v4-red) 61%)}
+.hero-visual{position:absolute;z-index:1;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}
+.hero-veil{position:absolute;z-index:3;inset:0;pointer-events:none;background:repeating-radial-gradient(circle at 10% 35%,rgba(72,157,206,.1) 0 1px,transparent 1px 6px)}
+.hero-copy-v4{z-index:5;width:min(46%,650px);height:410px;padding:26px 16px 22px 33px;justify-content:center}
+.hero-ribbon{font-size:.75rem;padding:6px 13px 7px;margin-bottom:4px}.hero-ribbon:before{inset:-4px -45px -4px -24px;background:linear-gradient(90deg,#d81836,#c81731)}
+.hero-v4 h1{max-width:600px;margin:16px 0 10px;font-size:clamp(3rem,4.4vw,4.9rem);line-height:.87;letter-spacing:-.067em;text-shadow:0 5px 0 rgba(0,0,0,.32),0 15px 35px rgba(0,0,0,.3)}
+.hero-v4 h1 span{position:relative;display:block;width:max-content;max-width:100%;color:var(--v4-gold);text-shadow:0 3px 0 #99620b,0 9px 20px rgba(0,0,0,.35)}
+.hero-v4 h1 span:after{content:"";position:absolute;left:0;right:-12px;bottom:-8px;height:7px;background:linear-gradient(90deg,#ffd53f,#f3a80d);clip-path:polygon(0 30%,94% 0,100% 32%,70% 56%,98% 72%,5% 100%);transform:rotate(-1deg)}
+.hero-v4 .hero-lead{max-width:520px;margin:8px 0 13px;font-size:.92rem;line-height:1.42;color:#f3f7fa;text-shadow:0 2px 10px #000}
+.hero-v4 .meta{gap:7px}.hero-v4 .meta span{padding:6px 10px;border-color:#8aa1b2;background:rgba(2,18,31,.84);font-size:.69rem;box-shadow:inset 0 0 0 1px rgba(255,211,61,.06)}
+.hero-v4 .hero-note{font-size:.74rem;margin-top:11px;color:#e8eef2}
+.hero-hand{position:absolute;z-index:6;color:#082238;font-family:"Segoe Print","Comic Sans MS",cursive;font-style:italic;font-weight:900;line-height:1.08;text-align:center;text-shadow:0 1px rgba(255,255,255,.35)}
+.hero-hand-top{right:2.2%;top:28px;font-size:.88rem;transform:rotate(-5deg)}
+.hero-brush-v4{position:absolute;z-index:7;right:5.7%;bottom:46px;padding:9px 23px 10px 32px;color:#092238;background:linear-gradient(100deg,#ffda41,#f5b319);font-family:"Segoe Print","Comic Sans MS",cursive;font-style:italic;font-weight:800;font-size:.84rem;line-height:1.05;transform:rotate(-5deg);clip-path:polygon(2% 24%,100% 0,96% 82%,8% 100%,0 66%);box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.hero-brush-v4 strong{font-size:1.03rem}.hero-words-v4{position:absolute;z-index:6;right:2.2%;bottom:13px;color:#e4eef4;font-size:.52rem;letter-spacing:.3em;line-height:1.55;text-align:right;text-shadow:0 2px 7px #000}
+.official{display:none}
+
+.layout{max-width:1540px;margin:10px auto 76px;padding:0 24px;grid-template-columns:300px minmax(0,1fr);gap:13px}
+.sidebar{top:82px;border:1px solid rgba(255,211,61,.88);border-radius:5px;background:linear-gradient(180deg,rgba(4,29,49,.98),rgba(2,18,31,.99));padding:13px 12px;box-shadow:0 18px 50px rgba(0,0,0,.42),inset 0 0 42px rgba(18,81,120,.11)}
+.sidebar:before{content:"";position:absolute;inset:auto -24px 0 0;height:160px;opacity:.45;pointer-events:none;background:linear-gradient(155deg,transparent 0 38%,#0c3551 38% 48%,transparent 48%),linear-gradient(25deg,transparent 0 48%,rgba(255,211,61,.25) 49% 50%,transparent 51%);clip-path:polygon(0 100%,0 70%,15% 46%,30% 72%,48% 30%,68% 72%,82% 49%,100% 76%,100% 100%)}
+.progress-title{font-size:.87rem;padding:4px 5px 9px}.progress-title span:last-child{font-size:1rem}.progress-track{height:8px;background:#6689a4}.progress-fill{background:linear-gradient(90deg,#fff16b,var(--v4-gold-deep));box-shadow:0 0 14px rgba(255,211,61,.5)}
+.navsteps{gap:3px;position:relative;z-index:2}.navsteps button{grid-template-columns:38px 1fr;padding:7px 6px;border-radius:7px}.navsteps button.active{background:linear-gradient(90deg,rgba(255,211,61,.16),rgba(255,211,61,.035));border-color:rgba(255,211,61,.35)}.nnum{width:34px;height:34px}.navsteps button.active .nnum{background:linear-gradient(145deg,#fff173,#f3a70e);box-shadow:0 0 18px #f4bb22}.nlabel strong{font-size:.84rem}.nlabel small{font-size:.68rem}
+.side-quote{position:relative;z-index:2;margin:16px 0 3px;padding:42px 8px 6px 112px;min-height:125px;background:none;clip-path:none;font-size:.98rem;line-height:1.04;transform:rotate(-5deg);text-align:left}.side-quote:after{content:"";position:absolute;left:114px;bottom:0;width:90px;height:6px;background:var(--v4-gold);clip-path:polygon(0 50%,90% 0,100% 50%,55% 70%,98% 100%,10% 75%)}
+.privacy{position:relative;z-index:2;border-color:#31536c;background:rgba(2,20,34,.82)}
+
+.step{border-radius:5px;border-color:rgba(255,211,61,.7);background:linear-gradient(135deg,rgba(4,31,51,.99),rgba(2,20,34,.995));box-shadow:0 18px 46px rgba(0,0,0,.36);padding:22px 24px}
+.step:before{background:radial-gradient(circle at 84% 0,rgba(34,130,184,.1),transparent 35rem),radial-gradient(circle,rgba(103,178,221,.065) .8px,transparent 1px);background-size:auto,8px 8px}
+.step-one{min-height:490px}
+.step-head{grid-template-columns:88px 1fr;gap:13px;margin-bottom:9px}.step-no{width:86px;height:58px;font-size:1.76rem;background:linear-gradient(145deg,#fff06a,#f0a710);box-shadow:0 6px 0 #9f6508;clip-path:polygon(13% 0,100% 0,84% 100%,0 100%)}.step h2{font-size:clamp(1.95rem,2.65vw,2.65rem);text-shadow:0 3px 12px rgba(0,0,0,.35)}.step-sub{font-size:.96rem;margin:4px 0 0}.time-chip{margin-top:5px;padding:4px 9px;border-color:#517897;background:#082b46}
+.step-one .objective{display:grid;grid-template-columns:40px 1fr;align-items:center;margin:9px 0 13px;padding:10px 13px;border:1px solid #6e9bb9;border-left:7px solid #a7d4f2;background:linear-gradient(90deg,#123d60,#0a2b47);font-size:.88rem}.objective-icon{font-size:1.9rem;color:var(--v4-gold);line-height:1}.step-one .objective strong{color:#fff}
+.clarity-label{margin:9px 0 6px}.pulse-v4{gap:9px}.pulse-v4 button{position:relative;min-height:88px;border-color:#668ca7;background:linear-gradient(180deg,#0c304c,#07253c);border-radius:7px;padding:9px 6px 25px;box-shadow:inset 0 1px rgba(255,255,255,.04)}.pulse-v4 button strong{font-size:1.18rem;margin-bottom:3px}.pulse-v4 button span{font-size:.75rem}.pulse-v4 button:after{position:absolute;left:50%;bottom:4px;transform:translateX(-50%);font-size:1.16rem;color:#a9c9dd}.pulse-v4 button:nth-child(1):after{content:"☹"}.pulse-v4 button:nth-child(2):after{content:"♧"}.pulse-v4 button:nth-child(3):after{content:"◇"}.pulse-v4 button:nth-child(4):after{content:"⚙"}.pulse-v4 button:nth-child(5):after{content:"◎"}.pulse-v4 button.active{background:radial-gradient(circle at 50% 40%,rgba(255,211,61,.21),rgba(15,43,57,.95));border:2px solid var(--v4-gold);color:#ffe565;box-shadow:0 0 0 1px #7f5b08,0 0 22px rgba(255,211,61,.42),inset 0 0 32px rgba(255,211,61,.08)}
+.field-v4{margin:11px 0 4px}.field-v4 label{font-size:.84rem}.textarea-wrap{position:relative}.field-v4 textarea{min-height:70px;padding:11px 13px 27px;background:linear-gradient(110deg,#eef5f9,#d8e7f1);border-color:#a9c4d6;border-radius:7px;font-size:.85rem}.char-count{position:absolute;right:10px;bottom:7px;color:#667a89;font-size:.66rem;font-variant-numeric:tabular-nums}
+.optional-question{margin:5px 0 0;color:#9fb6c7;font-size:.72rem}.optional-question summary{cursor:pointer;display:inline-block;padding:2px 0;color:#9fb6c7}.optional-question summary span{opacity:.7}.optional-question[open]{padding:6px 9px;border:1px dashed #3c617a;border-radius:7px;background:#061c2f}.optional-question .field{margin:5px 0}.optional-question input{padding:8px 10px}
+.step-one-footer{display:flex;align-items:center;gap:14px;margin:7px 230px 0 0;color:#aab9c4;font-family:Georgia,serif;font-style:italic;font-size:.79rem}.step-one-footer p{margin:0;white-space:nowrap}.step-one-footer span{height:2px;flex:1;background:linear-gradient(90deg,var(--v4-gold),transparent)}
+.next-v4{float:right;margin-top:-29px;min-width:210px;padding:11px 28px;font-size:.97rem;box-shadow:0 5px 0 #9b5c09,0 0 23px rgba(255,196,31,.18)}
+
+@media(max-width:1260px){.site-nav{gap:15px;margin-left:0}.site-nav a{font-size:.75rem}.hero-copy-v4{width:52%}.hero-hand-top{display:none}.hero-brush-v4{right:2%;bottom:44px}.layout{grid-template-columns:270px minmax(0,1fr)}}
+@media(max-width:1000px){.site-nav{display:none}.hero-card-v4{min-height:500px}.hero-copy-v4{width:63%;height:500px}.hero-visual{object-position:60% center}.hero-card-v4:before{background:linear-gradient(90deg,rgba(2,14,25,.99) 0%,rgba(3,20,34,.9) 44%,rgba(3,20,34,.25) 72%,transparent)}.hero-v4 h1{font-size:clamp(3rem,7.5vw,5rem)}.hero-brush-v4,.hero-words-v4{display:none}}
+@media(max-width:820px){.hero-v4{padding:9px 10px 0}.hero-card-v4{min-height:665px}.hero-visual{height:295px;object-fit:cover;object-position:70% center}.hero-card-v4:before{background:linear-gradient(180deg,rgba(2,14,25,.08) 0 31%,rgba(2,14,25,.95) 45%,#031522 63%)}.hero-copy-v4{width:100%;height:auto;min-height:665px;padding:288px 20px 24px;justify-content:flex-start}.hero-v4 h1{font-size:clamp(2.75rem,12vw,4rem);margin-top:14px}.hero-v4 .hero-lead{font-size:.88rem}.hero-v4 .meta span{font-size:.66rem}.layout{padding:0 10px}.step-one{min-height:0}.step-one-footer{margin-right:0}.next-v4{float:none;margin:11px 0 0;width:100%}.sidebar:before{display:none}}
+@media(max-width:520px){.topbar-inner{padding:5px 9px}.brand-logo,.brand-logo svg{width:54px}.brand-copy strong{font-size:.78rem}.top-actions{gap:4px}.timer{padding:6px 7px}.ctrl{padding:7px}.hero-card-v4{min-height:690px}.hero-copy-v4{padding:282px 16px 20px}.hero-v4 h1{font-size:2.8rem}.hero-v4 .hero-ribbon{font-size:.62rem}.pulse-v4{grid-template-columns:1fr 1fr}.pulse-v4 button:last-child{grid-column:1/-1}.step-head{grid-template-columns:65px 1fr}.step-no{width:63px;height:49px;font-size:1.32rem}.step h2{font-size:1.75rem}}
+
 </style>
 </head>
-<body>
+<body id="top">
 <a class="skip" href="#mainContent">Aller au contenu</a>
 <header class="topbar">
   <div class="topbar-inner">
@@ -221,6 +289,12 @@ footer{max-width:var(--max);margin:0 auto;padding:0 28px 48px;color:#9fb2c1;font
       </div>
       <div class="brand-copy"><strong>Cap Post-Bac · TG1</strong><span>Lycée Watteau · Valenciennes</span></div>
     </div>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="active" href="#top">Accueil</a>
+      <a href="#mainContent">Parcours</a>
+      <a href="#step4">Ressources</a>
+      <a href="#about">À propos</a>
+    </nav>
     <div class="top-actions">
       <div class="timer" title="Chronomètre de séance"><span>⏱</span><strong id="timerDisplay">60:00</strong><button id="timerToggle" aria-label="Démarrer ou mettre en pause">▶</button><button id="timerReset" aria-label="Réinitialiser">↺</button></div>
       <button class="ctrl" id="teacherToggle"><span class="label">🎓 Guide PP</span><span class="sr">Guide professeur principal</span></button>
@@ -230,71 +304,22 @@ footer{max-width:var(--max);margin:0 auto;padding:0 28px 48px;color:#9fb2c1;font
   </div>
 </header>
 
-<section class="hero" aria-labelledby="heroTitle">
-  <div class="hero-card">
-    <div class="hero-copy">
+<section class="hero hero-v4" aria-labelledby="heroTitle">
+  <div class="hero-card hero-card-v4">
+    <img class="hero-visual" src="assets/hero-watteau.webp" width="1536" height="512" alt="" fetchpriority="high" decoding="async">
+    <div class="hero-veil" aria-hidden="true"></div>
+    <div class="hero-copy hero-copy-v4">
       <span class="hero-ribbon"><i></i> Séance 1 · Orientation 2026–2027</span>
       <h1 id="heroTitle">Ton avenir n’est pas <span>un QCM.</span></h1>
-      <p class="hero-lead">Pendant 60 minutes, tu vas <strong>identifier ce qui compte pour toi</strong>, explorer les voies post-bac, apprendre à lire une information d’orientation et repartir avec <strong>une première action concrète</strong>.</p>
-      <div class="meta"><span>TG1</span><span>⏱ 60 minutes</span><span>👥 individuel + binôme</span><span>▥ aucune réponse n’est notée</span></div>
+      <p class="hero-lead">Pendant 60 minutes, tu vas <strong>identifier ce qui compte pour toi</strong>, explorer les grandes voies post-bac, apprendre à lire une information d’orientation et repartir avec <strong>une première action concrète</strong>.</p>
+      <div class="meta">
+        <span>🎓 TG1</span><span>⏱ 60 minutes</span><span>👥 activité individuelle + binôme</span><span>▥ aucune réponse n’est notée</span>
+      </div>
       <p class="hero-note"><b>SAUTIERE Thierry</b> · Professeur principal · groupe NSI</p>
     </div>
-    <div class="hero-art" aria-hidden="true">
-      <svg class="hero-svg" viewBox="0 0 820 470" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9e8b0"/><stop offset=".55" stop-color="#eabf63"/><stop offset="1" stop-color="#c66d43"/></linearGradient>
-          <linearGradient id="navyshirt" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0d3554"/><stop offset="1" stop-color="#051a2c"/></linearGradient>
-          <linearGradient id="yellowhood" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd94d"/><stop offset="1" stop-color="#c98d12"/></linearGradient>
-          <pattern id="dots" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#17334a" opacity=".22"/></pattern>
-        </defs>
-        <rect width="820" height="470" fill="url(#sky)"/>
-        <rect width="820" height="470" fill="url(#dots)"/>
-        <circle cx="602" cy="73" r="78" fill="#fff2bd" opacity=".55"/>
-        <!-- Watteau-inspired brick school -->
-        <g transform="translate(520 84)">
-          <rect x="45" y="90" width="230" height="205" fill="#a8342f" stroke="#6d201d" stroke-width="6"/>
-          <path d="M45 90L105 50l60 40 55-38 55 38" fill="#bc4d3d" stroke="#6d201d" stroke-width="6"/>
-          <rect x="0" y="64" width="78" height="231" fill="#b94738" stroke="#6d201d" stroke-width="6"/>
-          <rect x="14" y="82" width="18" height="36" fill="#dceaf0"/><rect x="46" y="82" width="18" height="36" fill="#dceaf0"/>
-          <g fill="#dceaf0"><rect x="66" y="122" width="18" height="38"/><rect x="103" y="122" width="18" height="38"/><rect x="140" y="122" width="18" height="38"/><rect x="196" y="122" width="18" height="38"/><rect x="232" y="122" width="18" height="38"/><rect x="66" y="183" width="18" height="38"/><rect x="103" y="183" width="18" height="38"/><rect x="140" y="183" width="18" height="38"/><rect x="196" y="183" width="18" height="38"/><rect x="232" y="183" width="18" height="38"/></g>
-          <rect x="138" y="239" width="38" height="56" fill="#f1dfbf"/>
-          <g transform="translate(14 -62)">
-            <rect x="0" y="0" width="72" height="128" rx="30" fill="#efe0c5" stroke="#9d2b2b" stroke-width="5"/>
-            <path d="M-7 20Q36-4 79 20M-3 67Q36 50 75 67" fill="none" stroke="#9d2b2b" stroke-width="6"/>
-            <path d="M20 37v15m16-19v19m16-15v15m-32 45v17m16-20v20m16-17v17" stroke="#9d2b2b" stroke-width="4"/>
-          </g>
-        </g>
-        <!-- Male student -->
-        <g transform="translate(65 34)">
-          <path d="M95 118c-18-20-23-58 2-82 21-20 71-27 101-8 27 17 36 51 25 79-9 23-30 38-62 45z" fill="#3b241c" stroke="#171214" stroke-width="7"/>
-          <path d="M112 62c15-32 48-41 78-25-7 7-4 10 8 13-19 3-25 10-22 21-24-5-43-1-64 12z" fill="#19181d"/>
-          <path d="M126 86c17-20 51-20 68 2 13 17 10 49-7 63-15 12-42 12-58-1-17-14-19-47-3-64z" fill="#e1ad8b" stroke="#3c211e" stroke-width="5"/>
-          <path d="M139 111q12-10 23 0M170 111q10-10 20 0M151 136q17 8 31-2" fill="none" stroke="#39201d" stroke-width="4"/>
-          <path d="M90 166c34-33 104-39 145 4 32 34 40 91 32 159H34c-5-75 9-126 56-163z" fill="url(#navyshirt)" stroke="#03131f" stroke-width="8"/>
-          <path d="M82 197l-38 132h60l26-121M214 187l40 142h-65l-19-118" fill="#0c2b44" stroke="#03131f" stroke-width="7"/>
-          <path d="M52 190c-18 38-27 88-25 139" fill="none" stroke="#80563c" stroke-width="18"/>
-          <path d="M83 168l-8 161M208 166l9 163" fill="none" stroke="#5e3d2e" stroke-width="10"/>
-          <rect x="88" y="241" width="127" height="118" rx="7" transform="rotate(-6 88 241)" fill="#112a41" stroke="#d4b561" stroke-width="4"/>
-          <text x="112" y="272" fill="#e3edf4" font-size="18" font-family="cursive" font-style="italic">EXPLORER</text>
-          <text x="112" y="296" fill="#e3edf4" font-size="18" font-family="cursive" font-style="italic">COMPRENDRE</text>
-          <text x="112" y="320" fill="#e3edf4" font-size="18" font-family="cursive" font-style="italic">CHOISIR</text>
-          <text x="112" y="344" fill="#e3edf4" font-size="18" font-family="cursive" font-style="italic">AGIR</text>
-          <path d="M107 351h94" stroke="#ffd23f" stroke-width="5"/>
-        </g>
-        <!-- Female student -->
-        <g transform="translate(305 92)">
-          <path d="M75 84c7-54 69-88 123-64 39 17 56 56 51 99-5 44-29 68-64 76-53 13-119-38-110-111z" fill="#5a2d1f" stroke="#2d1a16" stroke-width="7"/>
-          <path d="M101 83c18-30 64-41 92-18 24 20 25 56 6 79-19 24-62 29-85 7-19-18-24-47-13-68z" fill="#e6b18f" stroke="#4a2721" stroke-width="5"/>
-          <path d="M117 105q11-9 22 0M160 104q11-9 22 0M133 132q20 10 36-2" fill="none" stroke="#40221e" stroke-width="4"/>
-          <path d="M88 171c30-30 93-37 131-9 43 31 54 94 50 178H25c0-78 15-132 63-169z" fill="url(#yellowhood)" stroke="#6b4a0a" stroke-width="8"/>
-          <path d="M100 170l-32 170M207 167l20 173" stroke="#835e11" stroke-width="8"/>
-          <path d="M57 70c31-41 83-59 138-40-40-7-57 9-64 34-22-11-47 3-74 6zM186 56c56 19 90 68 76 123-5-37-25-62-59-71z" fill="#51271c"/>
-          <rect x="60" y="252" width="105" height="108" rx="6" fill="#132d45" stroke="#d8b463" stroke-width="4" transform="rotate(7 60 252)"/>
-        </g>
-      </svg>
-      <div class="hero-brush">MÊME HORIZON<br>PLUS GRAND</div>
-      <div class="hero-words">APPRENDRE<br>S’ORIENTER<br>SE RÉALISER</div>
-    </div>
+    <div class="hero-hand hero-hand-top" aria-hidden="true">DES CHOIX<br>AUJOURD’HUI,<br>DE GRANDES<br>AMBITIONS DEMAIN</div>
+    <div class="hero-brush-v4" aria-hidden="true">MÊME HORIZON<br><strong>PLUS GRAND</strong></div>
+    <div class="hero-words-v4" aria-hidden="true">APPRENDRE<br>S’ORIENTER<br>SE RÉALISER</div>
   </div>
 </section>
 
@@ -324,21 +349,38 @@ footer{max-width:var(--max);margin:0 auto;padding:0 28px 48px;color:#9fb2c1;font
   </aside>
 
   <main id="mainContent">
-    <section class="step" id="step1" data-step="1">
-      <div class="step-head"><div class="step-no">01</div><div><h2>Point de départ</h2><p class="step-sub">Où en es-tu aujourd’hui ? Pas où tu « devrais » en être.</p><span class="time-chip">⏱ 5 min · individuel</span></div></div>
-      <div class="objective"><strong>Objectif :</strong> poser un diagnostic sans jugement. Un projet d’orientation se construit progressivement et peut évoluer.</div>
-      <div class="teacher"><strong>Guide PP — 5 min.</strong> Poser le contrat : aucun élève n’a à « avoir déjà trouvé ». Faire verbaliser qu’une orientation solide repose sur des hypothèses à tester, pas sur une certitude précoce.<div class="mapping"><span>Se découvrir</span><span>Se projeter</span><span>Expliciter une question</span></div></div>
-      <p><strong>Mon niveau de clarté aujourd’hui :</strong></p>
-      <div class="pulse" id="clarityStart" role="group" aria-label="Niveau de clarté initial">
-        <button data-value="1"><strong>1</strong>Je suis perdu·e</button>
-        <button data-value="2"><strong>2</strong>J’ai quelques idées</button>
-        <button data-value="3"><strong>3</strong>J’ai 1–2 pistes</button>
-        <button data-value="4"><strong>4</strong>Mon projet se précise</button>
-        <button data-value="5"><strong>5</strong>Projet assez clair</button>
+    <section class="step step-v4 step-one" id="step1" data-step="1">
+      <div class="step-head">
+        <div class="step-no">01</div>
+        <div>
+          <h2>Point de départ</h2>
+          <p class="step-sub">Où en es-tu aujourd’hui ? Pas où tu « devrais » en être.</p>
+          <span class="time-chip">⏱ 5 min · individuel → lever de main facultatif</span>
+        </div>
       </div>
-      <div class="field"><label for="startingPoint">Si je devais répondre en une phrase aujourd’hui…</label><textarea id="startingPoint" data-save placeholder="Après le bac, j’envisage peut-être… / Je ne sais pas encore, mais je suis curieux de…"></textarea></div>
-      <div class="field"><label for="currentQuestion">La question d’orientation qui me préoccupe le plus</label><input id="currentQuestion" data-save placeholder="Quelle voie ? Est-ce accessible ? Quel coût ? Quels débouchés ?"></div>
-      <div class="validation" id="v1"></div><button class="complete" data-complete="1">Valider mon point de départ →</button>
+      <div class="objective"><span class="objective-icon" aria-hidden="true">◎</span><div><strong>Objectif :</strong> poser un diagnostic sans jugement. Un projet d’orientation se construit progressivement et peut évoluer.</div></div>
+      <div class="teacher"><strong>Guide PP — 5 min.</strong> Poser le contrat : aucun élève n’a à « avoir déjà trouvé ». Faire verbaliser qu’une orientation solide repose sur des hypothèses à tester, pas sur une certitude précoce.<div class="mapping"><span>Se découvrir</span><span>Se projeter</span><span>Expliciter une question</span></div></div>
+      <p class="clarity-label"><strong>Mon niveau de clarté aujourd’hui :</strong></p>
+      <div class="pulse pulse-v4" id="clarityStart" role="group" aria-label="Niveau de clarté initial">
+        <button data-value="1"><strong>1</strong><span>Je suis perdu·e</span></button>
+        <button data-value="2"><strong>2</strong><span>J’ai quelques idées</span></button>
+        <button data-value="3"><strong>3</strong><span>J’ai 1–2 pistes</span></button>
+        <button data-value="4"><strong>4</strong><span>Mon projet se précise</span></button>
+        <button data-value="5"><strong>5</strong><span>Projet déjà assez clair</span></button>
+      </div>
+      <div class="field field-v4">
+        <label for="startingPoint">Si je devais répondre en une phrase aujourd’hui…</label>
+        <div class="textarea-wrap">
+          <textarea id="startingPoint" data-save maxlength="500" placeholder="Après le bac, j’envisage peut-être… / Je ne sais pas encore, mais je suis curieux de…"></textarea>
+          <span class="char-count" id="startingPointCount" aria-live="polite">0 / 500</span>
+        </div>
+      </div>
+      <details class="optional-question">
+        <summary>+ Ma question d’orientation du moment <span>(facultatif)</span></summary>
+        <div class="field"><label for="currentQuestion">Ce que j’aimerais éclaircir</label><input id="currentQuestion" data-save maxlength="180" placeholder="Quelle voie ? Est-ce accessible ? Quel coût ? Quels débouchés ?"></div>
+      </details>
+      <div class="step-one-footer"><p>« Mieux se connaître, c’est déjà avancer. »</p><span aria-hidden="true"></span></div>
+      <div class="validation" id="v1"></div><button class="complete next-v4" data-complete="1">Suivant →</button>
     </section>
 
     <section class="step" id="step2" data-step="2">
@@ -437,7 +479,7 @@ footer{max-width:var(--max);margin:0 auto;padding:0 28px 48px;color:#9fb2c1;font
   </main>
 </div>
 
-<footer><div class="foot"><div><strong>Cap Post-Bac · TG1</strong><br>Support d’éducation à l’orientation. Il ne remplace ni le dialogue avec l’équipe éducative / Psy-EN, ni la consultation des sources officielles actualisées.</div><div class="footlinks"><a href="https://eduscol.education.gouv.fr/5400/l-orientation-du-lycee-vers-l-enseignement-superieur-et-parcoursup" target="_blank" rel="noopener">Éduscol</a><a href="https://avenirs.onisep.fr/" target="_blank" rel="noopener">Avenir(s)</a><a href="https://www.parcoursup.gouv.fr/" target="_blank" rel="noopener">Parcoursup</a></div></div></footer>
+<footer id="about"><div class="foot"><div><strong>Cap Post-Bac · TG1</strong><br>Support d’éducation à l’orientation. Il ne remplace ni le dialogue avec l’équipe éducative / Psy-EN, ni la consultation des sources officielles actualisées.</div><div class="footlinks"><a href="https://eduscol.education.gouv.fr/5400/l-orientation-du-lycee-vers-l-enseignement-superieur-et-parcoursup" target="_blank" rel="noopener">Éduscol</a><a href="https://avenirs.onisep.fr/" target="_blank" rel="noopener">Avenir(s)</a><a href="https://www.parcoursup.gouv.fr/" target="_blank" rel="noopener">Parcoursup</a></div></div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -461,6 +503,15 @@ $('#projectionToggle').onclick=function(){document.body.classList.toggle('projec
 $$('[data-save]').forEach(function(el){if(state[el.id]!=null)el.value=state[el.id];el.addEventListener('input',function(){state[el.id]=el.value;save()})});
 function bindPulse(id,key){var box=$(id);box.querySelectorAll('button').forEach(function(b){if(String(state[key])===b.dataset.value)b.classList.add('active');b.onclick=function(){box.querySelectorAll('button').forEach(function(x){x.classList.remove('active')});b.classList.add('active');state[key]=Number(b.dataset.value);save()}})}
 bindPulse('#clarityStart','clarityStart');bindPulse('#clarityEnd','clarityEnd');
+function bindCounter(inputId,countId,max){
+  var el=$(inputId),out=$(countId);if(!el||!out)return;
+  function draw(){out.textContent=el.value.length+' / '+max}
+  el.addEventListener('input',draw);draw();
+}
+bindCounter('#startingPoint','#startingPointCount',500);
+$('.site-nav a').forEach(function(a){a.addEventListener('click',function(){
+  $('.site-nav a').forEach(function(x){x.classList.remove('active')});a.classList.add('active');
+})});
 function bindPills(id,key){$(id).querySelectorAll('.pill').forEach(function(b){if(state.selected[key].indexOf(b.textContent)>=0)b.setAttribute('aria-pressed','true');else b.setAttribute('aria-pressed','false');b.onclick=function(){var on=b.getAttribute('aria-pressed')==='true';b.setAttribute('aria-pressed',on?'false':'true');var arr=state.selected[key];var text=b.textContent;if(on)state.selected[key]=arr.filter(function(x){return x!==text});else if(arr.indexOf(text)<0)arr.push(text);save()}})}
 bindPills('#interests','interests');bindPills('#conditions','conditions');
 
