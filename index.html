@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#041a2c">
+<meta name="color-scheme" content="dark light">
+<title>Cap Post-Bac · TG1 — Lycée Watteau</title>
+<style>
+:root{
+  --navy-950:#03131f;--navy-925:#041a2c;--navy-900:#06243b;--navy-850:#0a304d;--navy-700:#174d72;
+  --gold:#ffd23f;--gold2:#f4aa16;--red:#c81f37;--red2:#8f1028;--cream:#f5e7c8;
+  --ink:#f7f9fb;--muted:#b9c8d5;--card:#061f34;--line:#345b78;--cyan:#72c7ff;
+  --green:#65d6b3;--greenbg:#0d392f;--amber:#ffd15b;--amberbg:#3b2e0f;--focus:#ffe16b;
+  --shadow:0 22px 64px rgba(0,0,0,.38);--shadow-sm:0 10px 28px rgba(0,0,0,.28);--max:1450px;
+}
+html[data-theme="light"]{
+  --ink:#10263b;--muted:#5d6d78;--card:#fff9ed;--line:#c7aa74;--focus:#8d5b00;
+  --green:#0d7658;--greenbg:#e5f5ee;--amber:#7f5400;--amberbg:#fff0c3;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.5;
+  background:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px),
+    radial-gradient(circle at 82% -10%,rgba(255,205,52,.13),transparent 34rem),
+    radial-gradient(circle at -8% 28%,rgba(202,31,55,.16),transparent 34rem),
+    var(--navy-950);
+  background-size:38px 38px,38px 38px,auto,auto,auto;
+}
+html[data-theme="light"] body{
+  background:
+    linear-gradient(rgba(16,55,81,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(16,55,81,.03) 1px,transparent 1px),
+    radial-gradient(circle at 82% -10%,rgba(255,192,38,.22),transparent 34rem),
+    radial-gradient(circle at -8% 28%,rgba(196,37,51,.13),transparent 34rem),
+    #f0e5cf;
+  background-size:38px 38px,38px 38px,auto,auto,auto;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.14;
+  background-image:radial-gradient(circle,rgba(255,255,255,.72) .7px,transparent .8px);
+  background-size:7px 7px;mask-image:linear-gradient(to bottom,#000,transparent 70%)
+}
+html[data-theme="light"] body:before{opacity:.06;background-image:radial-gradient(circle,#163d5d .7px,transparent .8px)}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{color:#9bd9ff}
+html[data-theme="light"] a{color:#165d88}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+::selection{background:var(--gold);color:#071725}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:12px;top:-60px;z-index:999;background:#fff;color:#111;padding:10px 14px;border-radius:8px}
+.skip:focus{top:12px}
+
+/* Header */
+.topbar{position:sticky;top:0;z-index:80;background:rgba(3,19,31,.94);border-bottom:1px solid rgba(255,210,63,.45);backdrop-filter:blur(15px);box-shadow:0 10px 24px rgba(0,0,0,.22)}
+html[data-theme="light"] .topbar{background:rgba(255,249,237,.95)}
+.topbar-inner{max-width:var(--max);min-height:72px;margin:auto;padding:8px 28px;display:flex;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:13px;min-width:0}
+.brand-logo{width:76px;height:54px;display:grid;place-items:center;flex:0 0 auto}
+.brand-logo svg{width:76px;height:54px;display:block}
+.brand-copy strong{display:block;font-size:1.05rem;letter-spacing:.01em}
+.brand-copy span{display:block;color:#b9c8d5;font-size:.76rem}
+html[data-theme="light"] .brand-copy span{color:#5a6b79}
+.brand:after{content:"";width:2px;height:42px;margin-left:8px;background:linear-gradient(var(--gold),transparent)}
+.top-actions{margin-left:auto;display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+.ctrl,.timer{
+  border:1px solid rgba(190,213,232,.58);background:linear-gradient(180deg,rgba(9,38,61,.95),rgba(4,26,44,.95));
+  color:#f8fbff;border-radius:10px;padding:9px 12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 5px 16px rgba(0,0,0,.15)
+}
+html[data-theme="light"] .ctrl,html[data-theme="light"] .timer{background:#fff7e8;color:#17324a;border-color:#b89a64}
+.ctrl:hover,.timer:hover{border-color:var(--gold);box-shadow:0 0 0 1px rgba(255,210,63,.2),0 7px 20px rgba(0,0,0,.18)}
+.timer{display:flex;align-items:center;gap:7px;padding:7px 10px;font-variant-numeric:tabular-nums}
+.timer strong{font-size:1.12rem}.timer button{border:0;background:transparent;color:inherit;padding:4px 5px;border-radius:6px}
+
+/* Hero */
+.hero{max-width:var(--max);margin:0 auto;padding:22px 28px 0}
+.hero-card{
+  position:relative;overflow:hidden;min-height:460px;display:grid;grid-template-columns:minmax(520px,.9fr) minmax(560px,1.1fr);
+  border:1px solid rgba(255,210,63,.62);border-radius:8px;background:#061d31;box-shadow:var(--shadow);isolation:isolate
+}
+.hero-card:before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(110deg,#041c30 0%,#061f35 42%,rgba(6,31,53,.62) 61%,rgba(6,31,53,.08) 80%),
+  radial-gradient(circle at 20% 60%,rgba(40,121,180,.2),transparent 30rem)
+}
+.hero-card:after{content:"";position:absolute;inset:auto 0 0;height:7px;background:linear-gradient(90deg,var(--red) 0 31%,var(--gold) 31% 60%,var(--red) 60%);opacity:.9}
+.hero-copy{z-index:4;padding:38px 18px 34px 34px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;position:relative}
+.hero-ribbon{position:relative;display:inline-flex;align-items:center;gap:8px;padding:6px 12px 7px;color:white;font-weight:900;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase}
+.hero-ribbon:before{content:"";position:absolute;inset:-4px -38px -4px -22px;background:var(--red);transform:skewX(-13deg);z-index:-1;clip-path:polygon(0 0,100% 0,95% 100%,0 100%)}
+.hero-ribbon i{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+.hero h1{
+  max-width:690px;margin:30px 0 13px;font-family:"Arial Black","Segoe UI Black",Impact,sans-serif;font-style:italic;font-weight:1000;
+  font-size:clamp(3.05rem,5.2vw,5.85rem);line-height:.88;letter-spacing:-.065em;color:#fff;text-shadow:0 7px 0 rgba(0,0,0,.18);transform:skewX(-2deg)
+}
+.hero h1 span{display:block;color:var(--gold);text-shadow:0 4px 0 #9a590a,0 8px 20px rgba(0,0,0,.35)}
+.hero-lead{max-width:620px;margin:5px 0 17px;color:#f0f4f7;font-size:clamp(.96rem,1.25vw,1.14rem);line-height:1.42}
+.hero-lead strong{color:#fff}
+.meta{display:flex;gap:8px;flex-wrap:wrap}
+.meta span{padding:7px 12px;border:1px solid rgba(255,214,93,.58);background:rgba(4,24,40,.78);color:#f9fbfd;border-radius:999px;font-size:.78rem;font-weight:760}
+.hero-note{margin:13px 0 0;color:#d5e0e9;font-size:.84rem}.hero-note b:before{content:"●";color:var(--gold);margin-right:7px;text-shadow:0 0 9px var(--gold)}
+.hero-art{position:relative;min-height:460px;overflow:hidden;clip-path:polygon(10% 0,100% 0,100% 100%,0 100%,8% 76%,0 48%);background:linear-gradient(145deg,#eed798,#fff0c4)}
+.hero-art:before{content:"";position:absolute;z-index:5;left:0;top:0;bottom:0;width:130px;background:linear-gradient(90deg,#061d31 0%,rgba(6,29,49,.72) 35%,transparent)}
+.hero-art:after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 70px rgba(3,19,31,.4);pointer-events:none}
+.hero-svg{width:100%;height:100%;display:block}
+.hero-brush{position:absolute;z-index:6;right:18px;bottom:44px;background:var(--gold);color:#09233a;padding:8px 18px 9px 24px;font-family:"Segoe Print","Comic Sans MS",cursive;font-weight:900;font-style:italic;transform:rotate(-3deg);clip-path:polygon(3% 22%,96% 0,100% 69%,7% 100%,0 68%)}
+.hero-words{position:absolute;z-index:6;right:28px;bottom:16px;color:#d7e3ea;font-size:.65rem;letter-spacing:.32em;line-height:1.65;text-align:right}
+
+/* Official strip */
+.official{max-width:var(--max);margin:14px auto 18px;padding:0 28px}
+.official-inner{position:relative;overflow:hidden;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px 15px;border:1px solid rgba(255,210,63,.42);border-radius:9px;background:linear-gradient(90deg,#0a2b45,#08243a);color:#eaf3f9}
+html[data-theme="light"] .official-inner{background:#fff7e8;color:#153049;border-color:#c8a356}
+.official-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:8px;background:#112f45;border:1px solid rgba(255,210,63,.35);font-size:1.2rem}
+html[data-theme="light"] .official-icon{background:#f2e2bd}
+.official-inner strong{display:block}.official-inner small{display:block;color:#b8cad6;margin-top:2px}
+html[data-theme="light"] .official-inner small{color:#5e6b74}
+.fresh{font-size:.75rem;font-weight:850;color:var(--gold);white-space:nowrap}
+html[data-theme="light"] .fresh{color:#7d5600}
+
+/* Main layout */
+.layout{max-width:var(--max);margin:16px auto 80px;padding:0 28px;display:grid;grid-template-columns:300px minmax(0,1fr);gap:14px;align-items:start}
+.sidebar{position:sticky;top:84px;border:1px solid rgba(255,210,63,.65);border-radius:10px;background:linear-gradient(180deg,#082a45,#041d31);padding:14px;box-shadow:0 18px 42px rgba(0,0,0,.32);overflow:hidden}
+html[data-theme="light"] .sidebar{background:#fff8e9;color:#173049;border-color:#b88c34}
+.progress-title{display:flex;justify-content:space-between;align-items:center;padding:5px 4px 10px;color:#dce7ef;font-size:.82rem;font-weight:850}
+html[data-theme="light"] .progress-title{color:#173049}
+.progress-track{height:7px;background:#244a65;border-radius:999px;overflow:hidden;margin:0 4px 12px}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),#ff9f1f);transition:width .3s ease}
+.navsteps{display:grid;gap:4px}
+.navsteps button{width:100%;border:1px solid transparent;background:transparent;color:#eef5fa;border-radius:8px;padding:9px 7px;text-align:left;display:grid;grid-template-columns:36px 1fr;gap:9px;align-items:start}
+html[data-theme="light"] .navsteps button{color:#173049}
+.navsteps button:hover{background:#0e3859}.navsteps button.active{background:linear-gradient(90deg,rgba(255,210,63,.13),rgba(255,210,63,.03));border-color:rgba(255,210,63,.28)}
+html[data-theme="light"] .navsteps button:hover{background:#f2e3c3}
+.nnum{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:#071c2d;border:1px solid #9db8cb;color:#eef5fa;font-size:.82rem;font-weight:900}
+.navsteps button.active .nnum{background:var(--gold);color:#101b25;border-color:#fff1a1;box-shadow:0 0 18px rgba(255,210,63,.5)}
+html[data-theme="light"] .nnum{background:#fff;color:#173049;border-color:#9f8964}
+.nlabel strong{display:block;font-size:.86rem}.nlabel small{display:block;color:#9fb1bf;font-size:.7rem;margin-top:1px}.navsteps button.active .nlabel strong{color:var(--gold)}
+html[data-theme="light"] .nlabel small{color:#6f777e}html[data-theme="light"] .navsteps button.active .nlabel strong{color:#7a5300}
+.side-quote{margin:20px 4px 2px;padding:46px 18px 12px 26px;min-height:150px;background:linear-gradient(160deg,transparent 0 42%,rgba(13,68,102,.85) 42% 66%,rgba(2,19,32,.65) 66%);clip-path:polygon(0 26%,20% 0,46% 30%,62% 11%,100% 46%,100% 100%,0 100%);color:#fff1c4;font-family:"Segoe Print","Comic Sans MS",cursive;font-size:1rem;font-style:italic;font-weight:900;line-height:1.12;transform:rotate(-2deg);text-shadow:0 2px 0 #000}
+.privacy{margin:12px 4px 2px;padding:10px;border-radius:8px;background:#082238;border:1px solid #254a64;font-size:.73rem;color:#a8bdcb}
+html[data-theme="light"] .privacy{background:#f1e4ca;color:#5c6670;border-color:#c4ad81}
+
+/* Lesson panels */
+main{min-width:0}
+.step{scroll-margin-top:84px;position:relative;overflow:hidden;border:1px solid rgba(255,210,63,.48);background:linear-gradient(180deg,#082840 0%,#061f34 100%);border-radius:10px;padding:26px;box-shadow:0 16px 36px rgba(0,0,0,.25);margin-bottom:14px}
+.step:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 100% 0,rgba(255,210,63,.06),transparent 25rem),repeating-linear-gradient(135deg,rgba(255,255,255,.014) 0 1px,transparent 1px 9px)}
+.step>*{position:relative;z-index:1}
+html[data-theme="light"] .step{background:#fff9ed;color:#142c41;border-color:#c6a257}
+.step.done{border-color:rgba(99,217,181,.65)}
+.step.done:after{content:"✓";position:absolute;right:16px;top:14px;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:#124839;color:#9cf1d5;border:1px solid #58caab;font-weight:900}
+.step-head{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:start;margin-bottom:16px}
+.step-no{width:90px;height:58px;display:grid;place-items:center;clip-path:polygon(12% 0,100% 0,87% 100%,0 100%);background:linear-gradient(145deg,#ffe055,#f4aa16);color:#101b25;font-family:"Arial Black",Impact,sans-serif;font-size:1.6rem;font-style:italic;text-shadow:0 1px 0 #fff6c1}
+.step h2{margin:0;color:#fff;font-size:clamp(1.7rem,2.7vw,2.55rem);font-weight:900;font-style:italic;letter-spacing:-.045em;line-height:1}
+html[data-theme="light"] .step h2{color:#122a40}
+.step-sub{margin:6px 0 0;color:#becdda}.time-chip{display:inline-flex;margin-top:7px;padding:4px 8px;border:1px solid #557895;background:#0b304d;color:#e2ecf3;border-radius:7px;font-size:.73rem;font-weight:760}
+html[data-theme="light"] .step-sub{color:#5b6a77}html[data-theme="light"] .time-chip{background:#f2e8d4;color:#5d513e;border-color:#c6aa76}
+.objective{margin:14px 0;padding:13px 16px;border:1px solid #5a84a7;border-left:7px solid var(--gold);border-radius:8px;background:linear-gradient(90deg,#143a5b,#0e304d);color:#eef5fa}
+.objective strong{color:var(--gold)}html[data-theme="light"] .objective{background:#edf5f8;color:#173049;border-color:#7698ad;border-left-color:#c58a14}
+.teacher{display:none;margin:14px 0;padding:13px 14px;border:1px dashed var(--gold);border-radius:8px;background:#332b14;color:#fff0c1;font-size:.85rem}
+.teacher-mode .teacher{display:block}html[data-theme="light"] .teacher{background:#fff1bf;color:#4e3d18}
+.teacher strong{color:var(--gold)}html[data-theme="light"] .teacher strong{color:#755100}
+.mapping{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.mapping span{padding:4px 7px;border-radius:999px;background:#102b41;border:1px solid #456279;font-size:.71rem;color:#d1dde6}
+html[data-theme="light"] .mapping span{background:#fff8e9;color:#5e5d58;border-color:#c2a875}
+.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:.85rem;font-weight:800;color:#f0f5f9}.field input,.field textarea,.field select{width:100%;border:1px solid #89a6bb;background:#f0f4f7;color:#182838;border-radius:8px;padding:11px 12px;box-shadow:inset 0 1px 3px rgba(2,15,25,.12)}
+.field textarea{min-height:84px;resize:vertical}.field input::placeholder,.field textarea::placeholder{color:#71818d}
+html[data-theme="light"] .field label{color:#142c41}html[data-theme="light"] .field input,html[data-theme="light"] .field textarea,html[data-theme="light"] .field select{background:#fffdf8;color:#1c3042;border-color:#bfa981}
+.help{font-size:.75rem;color:#aabcc9}html[data-theme="light"] .help{color:#68727a}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pulse{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.pulse button{border:1px solid #4b6f89;background:#08243a;color:#eef4f8;padding:11px 7px;border-radius:9px;min-height:78px}.pulse button strong{display:block;font-size:1.15rem}.pulse button.active{background:linear-gradient(145deg,#372f17,#102b41);border-color:var(--gold);color:#ffe166;box-shadow:0 0 18px rgba(255,210,63,.18)}
+html[data-theme="light"] .pulse button{background:#fff8ec;color:#172d40;border-color:#c9ae7b}
+.card{position:relative;border:1px solid #355b76;background:#08243a;border-radius:9px;padding:14px;color:#f0f5f9;box-shadow:inset 0 1px 0 rgba(255,255,255,.025)}
+html[data-theme="light"] .card{background:#fff6e7;color:#173049;border-color:#c8ad7b}
+.card h3{margin:0 0 7px;font-size:.98rem}.card small{color:#b5c5d1}html[data-theme="light"] .card small{color:#6c6f70}
+.pills{display:flex;flex-wrap:wrap;gap:8px}.pill{border:1px solid #3c6480;background:#08243a;color:#eaf2f7;border-radius:999px;padding:8px 11px;font-size:.84rem}.pill[aria-pressed="true"]{background:#2d2918;border-color:var(--gold);color:var(--gold);font-weight:850}
+html[data-theme="light"] .pill{background:#fff7ea;color:#173049;border-color:#c5ab7b}html[data-theme="light"] .pill[aria-pressed="true"]{background:#fff0bd;color:#6b4a00}
+.quizlist{display:grid;gap:10px}.quiz{border:1px solid #355b76;background:#08243a;border-radius:9px;padding:14px}.quiztop{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.quiz p{margin:0;font-weight:760}.quizactions{display:flex;gap:7px}.quizactions button{border:1px solid #557894;background:#0e304b;color:#ecf4f9;padding:7px 10px;border-radius:7px;font-weight:800}.quizactions button.sel{border-color:var(--gold);color:var(--gold);background:#2d2918}.feedback{display:none;margin-top:9px;padding:9px 10px;border-radius:7px;font-size:.82rem}.feedback.show{display:block}.feedback.ok{background:#103c32;color:#a3efd6}.feedback.no{background:#3a2320;color:#ffd1b6}
+html[data-theme="light"] .quiz{background:#fff6e7;color:#173049;border-color:#c8ad7b}html[data-theme="light"] .quizactions button{background:#fff;color:#173049;border-color:#baa57e}
+.mission{margin:12px 0;padding:15px;border:1px solid #355b76;border-left:6px solid var(--red);border-radius:9px;background:linear-gradient(115deg,#102d46,#08243a)}.mission h3{margin:0 0 8px;color:var(--gold)}
+html[data-theme="light"] .mission{background:#fff5e2;color:#173049;border-color:#c2a76f;border-left-color:var(--red)}
+.sources{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.sources a{display:inline-flex;align-items:center;gap:5px;padding:7px 10px;border:1px solid #517995;background:#0b304b;color:#dff1ff;border-radius:7px;text-decoration:none;font-size:.82rem;font-weight:760}.sources a:hover{border-color:var(--gold);color:var(--gold)}
+html[data-theme="light"] .sources a{background:#fff;color:#174469;border-color:#aa956d}
+.callout{display:grid;grid-template-columns:auto 1fr;gap:10px;margin:12px 0;padding:12px 14px;border:1px solid #466a85;border-radius:9px;background:#122f49}.callout b{color:var(--gold)}
+html[data-theme="light"] .callout{background:#eaf2f5;color:#183148;border-color:#8fa9b8}html[data-theme="light"] .callout b{color:#735100}
+.complete{margin-top:9px;border:1px solid #ffe27a;background:linear-gradient(135deg,#ffdc4c,#f5aa19);color:#132030;font-weight:900;border-radius:2px;padding:11px 22px;box-shadow:0 7px 0 #9b5c09,0 12px 22px rgba(0,0,0,.24);clip-path:polygon(7% 0,100% 0,94% 100%,0 100%);min-width:240px}.complete:hover{transform:translateY(-1px);box-shadow:0 8px 0 #9b5c09,0 15px 26px rgba(0,0,0,.28)}
+.validation{display:none;margin-top:10px;padding:9px 11px;border:1px solid #826825;background:#3a2e13;color:#ffe383;border-radius:8px;font-size:.82rem}.validation.show{display:block}
+.summary{display:none;margin-top:18px;padding:18px;border:1px solid #4ca88c;border-radius:10px;background:linear-gradient(145deg,#0e3a30,#08243a)}.summary.show{display:block}.summary h3{margin:0 0 12px;color:#9cebd2}.summarygrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.sblock{padding:12px;border:1px solid #355b76;border-radius:8px;background:#08243a}.sblock strong{display:block;color:#9fb6c6;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}.summaryactions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.secondary,.danger{border:1px solid #5b7b91;background:#0b304b;color:#eef5fa;border-radius:8px;padding:9px 12px}.danger{border-color:#7b3042;background:#351520;color:#ffb3bd}
+details.refs{margin-top:15px;border:1px solid #355b76;border-radius:9px;background:#08243a;overflow:hidden}details.refs summary{cursor:pointer;padding:12px 14px;font-weight:800}details.refs[open] summary{border-bottom:1px solid #355b76}.refsbody{padding:14px}.refitem{padding:10px 0;border-bottom:1px dashed #355b76}.refitem:last-child{border-bottom:0}
+html[data-theme="light"] details.refs{background:#fff6e7;color:#173049;border-color:#c8ad7b}
+
+/* Projection / footer / responsive */
+.projection .hero,.projection .official{display:none}.projection .topbar{position:relative}.projection .layout{max-width:1600px;grid-template-columns:260px 1fr}.projection .step{font-size:1.12rem}.projection .step h2{font-size:3rem}
+footer{max-width:var(--max);margin:0 auto;padding:0 28px 48px;color:#9fb2c1;font-size:.78rem}.foot{border-top:1px solid #294b64;padding-top:14px;display:flex;justify-content:space-between;gap:20px}.footlinks{display:flex;flex-wrap:wrap;gap:10px}.footlinks a{text-decoration:none}
+.toast{position:fixed;left:50%;bottom:22px;z-index:120;transform:translate(-50%,90px);opacity:0;transition:.25s ease;background:#061a2b;color:#fff;border:1px solid var(--gold);border-radius:9px;padding:10px 14px;box-shadow:0 18px 36px rgba(0,0,0,.35);font-size:.84rem}.toast.show{transform:translate(-50%,0);opacity:1}
+@media(max-width:1120px){.hero-card{grid-template-columns:1fr}.hero-art{min-height:375px;clip-path:none}.hero-art:before{width:100%;height:110px;bottom:auto;background:linear-gradient(180deg,#061d31,transparent)}.hero-copy{padding:34px}.layout{grid-template-columns:250px minmax(0,1fr)}}
+@media(max-width:820px){.topbar-inner{padding:7px 12px}.brand-logo,.brand-logo svg{width:58px}.brand:after{display:none}.brand-copy span{display:none}.top-actions{gap:5px}.ctrl{padding:8px 9px}.ctrl .label{display:none}.hero{padding:12px 12px 0}.hero-copy{padding:30px 21px 24px}.hero h1{font-size:clamp(2.65rem,13vw,4.6rem)}.hero-art{min-height:305px}.official{padding:0 12px}.official-inner{grid-template-columns:auto 1fr}.fresh{grid-column:2}.layout{display:block;padding:0 12px}.sidebar{position:relative;top:0;margin-bottom:12px}.side-quote,.privacy{display:none}.navsteps{grid-template-columns:repeat(3,1fr)}.step{padding:20px 16px}.step-head{grid-template-columns:64px 1fr}.step-no{width:62px;height:50px;font-size:1.25rem}.grid2,.grid3,.summarygrid{grid-template-columns:1fr}.pulse{grid-template-columns:repeat(2,1fr)}.foot{display:block}.footlinks{margin-top:10px}}
+@media(max-width:520px){.brand-copy strong{font-size:.86rem}.timer strong{font-size:.96rem}.hero-art{min-height:250px}.meta{gap:6px}.meta span{font-size:.69rem;padding:6px 8px}.navsteps{grid-template-columns:1fr 1fr}.pulse{grid-template-columns:1fr}.quiztop{display:block}.quizactions{margin-top:9px}.sources{display:grid}.sources a{text-align:center;justify-content:center}.complete{width:100%;min-width:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+@media print{body{background:#fff!important;color:#111!important}.topbar,.hero,.official,.sidebar,.teacher,.complete,footer,.summaryactions{display:none!important}.layout{display:block;max-width:none;padding:0}.step{break-inside:avoid;background:#fff!important;color:#111!important;border:1px solid #999!important;box-shadow:none}.step h2,.field label{color:#111!important}.field input,.field textarea{background:#fff!important;color:#111!important;border:1px solid #aaa!important}.summary{display:block!important;background:#fff!important;color:#111!important;border:1px solid #777!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">Aller au contenu</a>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-logo" aria-label="Lycée Watteau Valenciennes">
+        <svg viewBox="0 0 160 110" role="img" aria-label="Logo stylisé du Lycée Watteau">
+          <g fill="none" stroke="#b51f2e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 71 Q80 44 144 71"/>
+            <path d="M36 66V35h58v31M46 35V24h38v11M52 24h26"/>
+            <path d="M95 66V29h38v42M104 29V18h20v11M108 18v-7h12v7"/>
+            <path d="M44 48h8m10 0h8m-26 11h8m10 0h8m42-15h8m-8 13h8"/>
+          </g>
+          <text x="80" y="88" text-anchor="middle" fill="#f6f8fb" font-size="15" font-weight="800" letter-spacing="6">LYCÉE</text>
+          <text x="80" y="106" text-anchor="middle" fill="#b51f2e" font-size="22" font-family="cursive" font-style="italic" font-weight="900">Watteau</text>
+        </svg>
+      </div>
+      <div class="brand-copy"><strong>Cap Post-Bac · TG1</strong><span>Lycée Watteau · Valenciennes</span></div>
+    </div>
+    <div class="top-actions">
+      <div class="timer" title="Chronomètre de séance"><span>⏱</span><strong id="timerDisplay">60:00</strong><button id="timerToggle" aria-label="Démarrer ou mettre en pause">▶</button><button id="timerReset" aria-label="Réinitialiser">↺</button></div>
+      <button class="ctrl" id="teacherToggle"><span class="label">🎓 Guide PP</span><span class="sr">Guide professeur principal</span></button>
+      <button class="ctrl" id="projectionToggle"><span class="label">▣ Projection</span><span class="sr">Mode projection</span></button>
+      <button class="ctrl" id="themeToggle" aria-label="Changer de thème">◐</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" aria-labelledby="heroTitle">
+  <div class="hero-card">
+    <div class="hero-copy">
+      <span class="hero-ribbon"><i></i> Séance 1 · Orientation 2026–2027</span>
+      <h1 id="heroTitle">Ton avenir n’est pas <span>un QCM.</span></h1>
+      <p class="hero-lead">Pendant 60 minutes, tu vas <strong>identifier ce qui compte pour toi</strong>, explorer les voies post-bac, apprendre à lire une information d’orientation et repartir avec <strong>une première action concrète</strong>.</p>
+      <div class="meta"><span>TG1</span><span>⏱ 60 minutes</span><span>👥 individuel + binôme</span><span>▥ aucune réponse n’est notée</span></div>
+      <p class="hero-note"><b>SAUTIERE Thierry</b> · Professeur principal · groupe NSI</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg class="hero-svg" viewBox="0 0 820 470" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9e8b0"/><stop offset=".55" stop-color="#eabf63"/><stop offset="1" stop-color="#c66d43"/></linearGradient>
+          <linearGradient id="navyshirt" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0d3554"/><stop offset="1" stop-color="#051a2c"/></linearGradient>
+          <linearGradient id="yellowhood" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd94d"/><stop offset="1" stop-color="#c98d12"/></linearGradient>
+          <pattern id="dots" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#17334a" opacity=".22"/></pattern>
+        </defs>
+        <rect width="820" height="470" fill="url(#sky)"/>
+        <rect width="820" height="470" fill="url(#dots)"/>
+        <circle cx="602" cy="73" r="78" fill="#fff2bd" opacity=".55"/>
+        <!-- Watteau-inspired brick school -->
+        <g transform="translate(520 84)">
+          <rect x="45" y="90" width="230" height="205" fill="#a8342f" stroke="#6d201d" stroke-width="6"/>
+          <path d="M45 90L105 50l60 40 55-38 55 38" fill="#bc4d3d" stroke="#6d201d" stroke-width="6"/>
+          <rect x="0" y="64" width="78" height="231" fill="#b94738" stroke="#6d201d" stroke-width="6"/>
+          <rect x="14" y="82" width="18" height="36" fill="#dceaf0"/><rect x="46" y="82" width="18" height="36" fill="#dceaf0"/>
+          <g fill="#dceaf0"><rect x="66" y="122" width="18" height="38"/><rect x="103" y="122" width="18" height="38"/><rect x="140" y="122" width="18" height="38"/><rect x="196" y="122" width="18" height="38"/><rect x="232" y="122" width="18" height="38"/><rect x="66" y="183" width="18" height="38"/><rect x="103" y="183" width="18" height="38"/><rect x="140" y="183" width="18" height="38"/><rect x="196" y="183" width="18" height="38"/><rect x="232" y="183" width="18" height="38"/></g>
+          <rect x="138" y="239" width="38" height="56" fill="#f1dfbf"/>
+          <g transform="translate(14 -62)">
+            <rect x="0" y="0" width="72" height="128" rx="30" fill="#efe0c5" stroke="#9d2b2b" stroke-width="5"/>
+            <path d="M-7 20Q36-4 79 20M-3 67Q36 50 75 67" fill="none" stroke="#9d2b2b" stroke-width="6"/>
+            <path d="M20 37v15m16-19v19m16-15v15m-32 45v17m16-20v20m16-17v17" stroke="#9d2b2b" stroke-width="4"/>
+          </g>
+        </g>
+        <!-- Male student -->
+        <g transform="translate(65 34)">
+          <path d="M95 118c-18-20-23-58 2-82 21-20 71-27 101-8 27 17 36 51 25 79-9 23-30 38-62 45z" fill="#3b241c" stroke="#171214" stroke-width="7"/>
+          <path d="M112 62c15-32 48-41 78-25-7 7-4 10 8 13-19 3-25 10-22 21-24-5-43-1-64 12z" fill="#19181d"/>
+          <path d="M126 86c17-20 51-20 68 2 13 17 10 49-7 63-15 12-42 12-58-1-17-14-19-47-3-64z" fill="#e1ad8b" stroke="#3c211e" stroke-width="5"/>
+          <path d="M139 111q12-10 23 0M170 111q10-10 20 0M151 136q17 8 31-2" fill="none" stroke="#39201d" stroke-width="4"/>
+          <path d="M90 166c34-33 104-39 145 4 32 34 40 91 32 159H34c-5-75 9-126 56-163z" fill="url(#navyshirt)" stroke="#03131f" stroke-width="8"/>
+          <path d="M82 197l-38 132h60l26-121M214 187l40 142h-65l-19-118" fill="#0c2b44" stroke="#03131f" stroke-width="7"/>
+          <path d="M52 190c-18 38-27 88-25 139" fill="none" stroke="#80563c" stroke-width="18"/>
+          <path d="M83 168l-8 161M208 166l9 163" fill="none" stroke="#5e3d2e" stroke-width="10"/>
+          <rect x="88" y="241" width="127" height="118" rx="7" transform="rotate(-6 88 241)" fill="#112a41" stroke="#d4b561" stroke-width="4"/>
+          <text x="112" y="272" fill="#e3edf4" font-size="18" font-family="cursive" font-style="italic">EXPLORER</text>
+          <text x="112" y="296" fill="#e3edf4" font-size="18" font-family="cursive" font-style="italic">COMPRENDRE</text>
+          <text x="112" y="320" fill="#e3edf4" font-size="18" font-family="cursive" font-style="italic">CHOISIR</text>
+          <text x="112" y="344" fill="#e3edf4" font-size="18" font-family="cursive" font-style="italic">AGIR</text>
+          <path d="M107 351h94" stroke="#ffd23f" stroke-width="5"/>
+        </g>
+        <!-- Female student -->
+        <g transform="translate(305 92)">
+          <path d="M75 84c7-54 69-88 123-64 39 17 56 56 51 99-5 44-29 68-64 76-53 13-119-38-110-111z" fill="#5a2d1f" stroke="#2d1a16" stroke-width="7"/>
+          <path d="M101 83c18-30 64-41 92-18 24 20 25 56 6 79-19 24-62 29-85 7-19-18-24-47-13-68z" fill="#e6b18f" stroke="#4a2721" stroke-width="5"/>
+          <path d="M117 105q11-9 22 0M160 104q11-9 22 0M133 132q20 10 36-2" fill="none" stroke="#40221e" stroke-width="4"/>
+          <path d="M88 171c30-30 93-37 131-9 43 31 54 94 50 178H25c0-78 15-132 63-169z" fill="url(#yellowhood)" stroke="#6b4a0a" stroke-width="8"/>
+          <path d="M100 170l-32 170M207 167l20 173" stroke="#835e11" stroke-width="8"/>
+          <path d="M57 70c31-41 83-59 138-40-40-7-57 9-64 34-22-11-47 3-74 6zM186 56c56 19 90 68 76 123-5-37-25-62-59-71z" fill="#51271c"/>
+          <rect x="60" y="252" width="105" height="108" rx="6" fill="#132d45" stroke="#d8b463" stroke-width="4" transform="rotate(7 60 252)"/>
+        </g>
+      </svg>
+      <div class="hero-brush">MÊME HORIZON<br>PLUS GRAND</div>
+      <div class="hero-words">APPRENDRE<br>S’ORIENTER<br>SE RÉALISER</div>
+    </div>
+  </div>
+</section>
+
+<div class="official">
+  <div class="official-inner">
+    <div class="official-icon">✓</div>
+    <div><strong>Orientation = apprendre à s’orienter</strong><small>Plan Avenir, Avenir(s), Onisep et Parcoursup : on cherche, on vérifie, on compare, puis on agit. Le calendrier Parcoursup 2027 doit être vérifié sur la source officielle dès sa publication.</small></div>
+    <div class="fresh">VÉRIFIÉ · 21/09/2026</div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar" aria-label="Progression">
+    <div class="progress-title"><span>Progression</span><span id="progressText">0 / 7</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <nav class="navsteps" id="stepNav">
+      <button class="active" data-target="step1"><span class="nnum">1</span><span class="nlabel"><strong>Point de départ</strong><small>0–5 min</small></span></button>
+      <button data-target="step2"><span class="nnum">2</span><span class="nlabel"><strong>Ma boussole</strong><small>5–15 min</small></span></button>
+      <button data-target="step3"><span class="nnum">3</span><span class="nlabel"><strong>Idées reçues</strong><small>15–23 min</small></span></button>
+      <button data-target="step4"><span class="nnum">4</span><span class="nlabel"><strong>Mission Parcoursup</strong><small>23–43 min</small></span></button>
+      <button data-target="step5"><span class="nnum">5</span><span class="nlabel"><strong>Comparer</strong><small>43–53 min</small></span></button>
+      <button data-target="step6"><span class="nnum">6</span><span class="nlabel"><strong>Prochain pas</strong><small>53–58 min</small></span></button>
+      <button data-target="step7"><span class="nnum">7</span><span class="nlabel"><strong>Bilan & synthèse</strong><small>58–60 min</small></span></button>
+    </nav>
+    <div class="side-quote">CHAQUE<br>PARCOURS<br>COMPTE</div>
+    <div class="privacy"><b>Vie privée :</b> tes réponses restent dans ce navigateur pendant cette session. Rien n’est envoyé à un serveur.</div>
+  </aside>
+
+  <main id="content">
+    <section class="step" id="step1" data-step="1">
+      <div class="step-head"><div class="step-no">01</div><div><h2>Point de départ</h2><p class="step-sub">Où en es-tu aujourd’hui ? Pas où tu « devrais » en être.</p><span class="time-chip">⏱ 5 min · individuel</span></div></div>
+      <div class="objective"><strong>Objectif :</strong> poser un diagnostic sans jugement. Un projet d’orientation se construit progressivement et peut évoluer.</div>
+      <div class="teacher"><strong>Guide PP — 5 min.</strong> Poser le contrat : aucun élève n’a à « avoir déjà trouvé ». Faire verbaliser qu’une orientation solide repose sur des hypothèses à tester, pas sur une certitude précoce.<div class="mapping"><span>Se découvrir</span><span>Se projeter</span><span>Expliciter une question</span></div></div>
+      <p><strong>Mon niveau de clarté aujourd’hui :</strong></p>
+      <div class="pulse" id="clarityStart" role="group" aria-label="Niveau de clarté initial">
+        <button data-value="1"><strong>1</strong>Je suis perdu·e</button>
+        <button data-value="2"><strong>2</strong>J’ai quelques idées</button>
+        <button data-value="3"><strong>3</strong>J’ai 1–2 pistes</button>
+        <button data-value="4"><strong>4</strong>Mon projet se précise</button>
+        <button data-value="5"><strong>5</strong>Projet assez clair</button>
+      </div>
+      <div class="field"><label for="startingPoint">Si je devais répondre en une phrase aujourd’hui…</label><textarea id="startingPoint" data-save placeholder="Après le bac, j’envisage peut-être… / Je ne sais pas encore, mais je suis curieux de…"></textarea></div>
+      <div class="field"><label for="currentQuestion">La question d’orientation qui me préoccupe le plus</label><input id="currentQuestion" data-save placeholder="Quelle voie ? Est-ce accessible ? Quel coût ? Quels débouchés ?"></div>
+      <div class="validation" id="v1"></div><button class="complete" data-complete="1">Valider mon point de départ →</button>
+    </section>
+
+    <section class="step" id="step2" data-step="2">
+      <div class="step-head"><div class="step-no">02</div><div><h2>Ma boussole</h2><p class="step-sub">Partir de preuves vécues plutôt que d’étiquettes toutes faites.</p><span class="time-chip">⏱ 10 min · individuel + binôme</span></div></div>
+      <div class="teacher"><strong>Guide PP — 10 min.</strong> Demander « qu’est-ce qui te fait dire cela ? ». Les intérêts évoluent : on cherche des indices, jamais une identité figée.<div class="mapping"><span>Apprendre à se connaître</span><span>Traduire une expérience en compétence</span><span>Cultiver ses ambitions</span></div></div>
+      <div class="grid2">
+        <div class="card"><h3>Ce qui m’attire</h3><div class="pills" id="interests"><button class="pill">Comprendre</button><button class="pill">Créer</button><button class="pill">Résoudre</button><button class="pill">Aider</button><button class="pill">Communiquer</button><button class="pill">Organiser</button><button class="pill">Expérimenter</button><button class="pill">Entreprendre</button></div></div>
+        <div class="card"><h3>Conditions qui m’aident à réussir</h3><div class="pills" id="conditions"><button class="pill">Cadre structuré</button><button class="pill">Autonomie</button><button class="pill">Pratique</button><button class="pill">Théorie</button><button class="pill">Travail en équipe</button><button class="pill">Projets longs</button><button class="pill">Alternance</button><button class="pill">Proximité</button></div></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label for="evidence">Une expérience où je me suis senti·e efficace</label><textarea id="evidence" data-save placeholder="Cours, projet, sport, association, job, activité personnelle… Qu’ai-je réellement fait ?"></textarea></div>
+        <div class="field"><label for="skill">Ce que cette expérience révèle peut-être</label><textarea id="skill" data-save placeholder="Persévérance, logique, créativité, autonomie, coopération, communication…"></textarea></div>
+      </div>
+      <div class="field"><label for="pairInsight">Après l’échange en binôme : une chose que je précise</label><input id="pairInsight" data-save placeholder="Une force, un critère, une question ou une piste"></div>
+      <div class="validation" id="v2"></div><button class="complete" data-complete="2">Garder mes indices →</button>
+    </section>
+
+    <section class="step" id="step3" data-step="3">
+      <div class="step-head"><div class="step-no">03</div><div><h2>Idées reçues</h2><p class="step-sub">Vérifier avant de croire… et vérifier avant de s’interdire.</p><span class="time-chip">⏱ 8 min · binôme</span></div></div>
+      <div class="objective"><strong>Méthode :</strong> distinguer un fait, une interprétation et une décision. Une donnée d’accès n’est pas une prophétie individuelle.</div>
+      <div class="teacher"><strong>Guide PP — 8 min.</strong> Exiger une justification avant chaque clic. Le Plan Avenir vise explicitement la lutte contre les déterminismes sociaux, de genre et territoriaux.<div class="mapping"><span>Esprit critique</span><span>Traiter l’information</span><span>Limiter l’autocensure</span></div></div>
+      <div class="quizlist" id="quizList">
+        <div class="quiz" data-q="q1" data-answer="false"><div class="quiztop"><p>« Parcoursup est un algorithme qui décide seul qui est admis. »</p><div class="quizactions"><button data-a="true">Vrai</button><button data-a="false">Faux</button></div></div><div class="feedback"></div></div>
+        <div class="quiz" data-q="q2" data-answer="false"><div class="quiztop"><p>« Le taux d’accès d’une formation donne ma probabilité personnelle d’être admis. »</p><div class="quizactions"><button data-a="true">Vrai</button><button data-a="false">Faux</button></div></div><div class="feedback"></div></div>
+        <div class="quiz" data-q="q3" data-answer="true"><div class="quiztop"><p>« Les critères d’analyse des candidatures sont consultables sur la fiche de formation. »</p><div class="quizactions"><button data-a="true">Vrai</button><button data-a="false">Faux</button></div></div><div class="feedback"></div></div>
+        <div class="quiz" data-q="q4" data-answer="true"><div class="quiztop"><p>« Avant d’écarter une formation, je peux vérifier contenu, coût, bourses, accès et contraintes concrètes. »</p><div class="quizactions"><button data-a="true">Vrai</button><button data-a="false">Faux</button></div></div><div class="feedback"></div></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label for="stretch">Une piste que je pourrais écarter trop vite</label><input id="stretch" data-save placeholder="Une voie, un établissement, une ville, un domaine…"></div>
+        <div class="field"><label for="stretchCheck">Avant de dire non, je dois vérifier…</label><input id="stretchCheck" data-save placeholder="Conditions d’accès, coût réel, bourses, contenu, transport…"></div>
+      </div>
+      <div class="validation" id="v3"></div><button class="complete" data-complete="3">Pièges repérés →</button>
+    </section>
+
+    <section class="step" id="step4" data-step="4">
+      <div class="step-head"><div class="step-no">04</div><div><h2>Mission Parcoursup</h2><p class="step-sub">Une formation réelle, sept preuves utiles.</p><span class="time-chip">⏱ 20 min · recherche web</span></div></div>
+      <div class="teacher"><strong>Guide PP — 20 min.</strong> Faire ouvrir une vraie fiche. Relance unique : « Quelle partie de la fiche prouve ce que tu affirmes ? ». La carte d’identité et les rubriques doivent conduire à une décision mieux informée.<div class="mapping"><span>Chercher & trier</span><span>Explorer les formations</span><span>Identifier des sources fiables</span></div></div>
+      <div class="mission"><h3>🎯 Mission : 1 formation, 7 preuves</h3><p>Choisis une formation plausible <em>ou simplement intrigante</em>. Ne copie pas la fiche : relève les informations qui changent vraiment ta compréhension.</p><div class="sources"><a href="https://www.parcoursup.gouv.fr/" target="_blank" rel="noopener">↗ Parcoursup</a><a href="https://avenirs.onisep.fr/" target="_blank" rel="noopener">↗ Avenir(s)</a><a href="https://www.onisep.fr/" target="_blank" rel="noopener">↗ Onisep</a></div></div>
+      <div class="grid2">
+        <div class="field"><label for="formation">Formation étudiée</label><input id="formation" data-save placeholder="Intitulé précis + établissement"></div>
+        <div class="field"><label for="nature">Nature / statut</label><input id="nature" data-save placeholder="Licence, BUT, BTS, CPGE, école… public/privé, sélectif/non sélectif"></div>
+        <div class="field"><label for="content">Contenus qui comptent pour moi</label><textarea id="content" data-save placeholder="Enseignements, rythme, projets, stages, spécialisation…"></textarea></div>
+        <div class="field"><label for="criteria">Critères d’analyse des candidatures</label><textarea id="criteria" data-save placeholder="Résultats, appréciations, motivation, compétences… et leur importance"></textarea></div>
+        <div class="field"><label for="access">Chiffres d’accès / profils</label><textarea id="access" data-save placeholder="Ce que les données montrent, sans en faire une probabilité personnelle"></textarea></div>
+        <div class="field"><label for="cost">Coût / logement / transport / bourses</label><textarea id="cost" data-save placeholder="Ce que je dois réellement anticiper"></textarea></div>
+        <div class="field"><label for="outcomes">Poursuites et débouchés</label><textarea id="outcomes" data-save placeholder="Études après le diplôme, métiers, insertion…"></textarea></div>
+        <div class="field"><label for="sourceProof">Source consultée + date</label><input id="sourceProof" data-save placeholder="Parcoursup, fiche consultée le…"></div>
+      </div>
+      <div class="field"><label for="openQuestion">Ce qui reste à vérifier</label><textarea id="openQuestion" data-save placeholder="Une vraie question pour poursuivre l’enquête"></textarea></div>
+      <div class="callout"><span>⚠</span><div><b>Important :</b> les chiffres d’accès servent à se repérer. Les critères publiés par la formation expliquent ce qui sera réellement examiné dans le dossier.</div></div>
+      <div class="validation" id="v4"></div><button class="complete" data-complete="4">Enquête documentée →</button>
+    </section>
+
+    <section class="step" id="step5" data-step="5">
+      <div class="step-head"><div class="step-no">05</div><div><h2>Comparer</h2><p class="step-sub">Éviter l’effet tunnel : confronter une piste à une alternative réelle.</p><span class="time-chip">⏱ 10 min · comparaison rapide</span></div></div>
+      <div class="teacher"><strong>Guide PP — 10 min.</strong> Demander : « quelle différence change vraiment ta décision ? ». Comparer une option proche ou, au contraire, une option qui élargit le champ des possibles.<div class="mapping"><span>Comparer</span><span>Comprendre les implications</span><span>Élargir l’horizon</span></div></div>
+      <div class="grid2">
+        <div class="card"><h3>Option A</h3><div class="field"><label for="aPlus">Ce qui m’attire</label><textarea id="aPlus" data-save></textarea></div><div class="field"><label for="aWatch">Ce qui me questionne</label><textarea id="aWatch" data-save></textarea></div></div>
+        <div class="card"><h3>Option B</h3><div class="field"><label for="compareName">Formation / voie comparée</label><input id="compareName" data-save placeholder="Nom + établissement"></div><div class="field"><label for="bPlus">Ce qui m’attire</label><textarea id="bPlus" data-save></textarea></div></div>
+      </div>
+      <div class="field"><label for="compareConclusion">Après comparaison, ce que je sais mieux qu’il y a 10 minutes</label><textarea id="compareConclusion" data-save placeholder="Ce qui fait réellement la différence pour moi"></textarea></div>
+      <div class="sources"><a href="https://www.parcoursup.gouv.fr/trouver-une-formation/nos-conseils-pour-chercher-une-formation-1646" target="_blank" rel="noopener">↗ Conseils Parcoursup</a><a href="https://messervices.etudiant.gouv.fr/" target="_blank" rel="noopener">↗ Bourse / logement</a></div>
+      <div class="validation" id="v5"></div><button class="complete" data-complete="5">Comparaison terminée →</button>
+    </section>
+
+    <section class="step" id="step6" data-step="6">
+      <div class="step-head"><div class="step-no">06</div><div><h2>Prochain pas</h2><p class="step-sub">Une orientation avance quand une réflexion devient une action.</p><span class="time-chip">⏱ 5 min · individuel</span></div></div>
+      <div class="teacher"><strong>Guide PP — 5 min.</strong> L’action doit être faisable dans les 7 jours : ouvrir une fiche, prendre un rendez-vous, noter une JPO, comparer deux contenus, contacter une personne.<div class="mapping"><span>Agir</span><span>Mobiliser des ressources</span><span>Planifier</span></div></div>
+      <div class="grid2">
+        <div class="field"><label for="hypA">Hypothèse A</label><input id="hypA" data-save placeholder="Formation, domaine ou type de voie"></div>
+        <div class="field"><label for="hypB">Hypothèse B</label><input id="hypB" data-save placeholder="Une autre piste, différente ou complémentaire"></div>
+      </div>
+      <div class="field"><label for="nextAction">Mon action dans les 7 jours</label><textarea id="nextAction" data-save placeholder="Verbe d’action + quoi + quand : ex. jeudi, comparer deux BUT sur Parcoursup"></textarea></div>
+      <div class="field"><label for="helpPerson">Une personne ou ressource que je peux mobiliser</label><input id="helpPerson" data-save placeholder="Professeur principal, Psy-EN, famille, étudiant, Avenir(s), Onisep…"></div>
+      <div class="validation" id="v6"></div><button class="complete" data-complete="6">Mon prochain pas est concret →</button>
+    </section>
+
+    <section class="step" id="step7" data-step="7">
+      <div class="step-head"><div class="step-no">07</div><div><h2>Bilan & synthèse</h2><p class="step-sub">Mesurer le déplacement et garder une trace réutilisable.</p><span class="time-chip">⏱ 2 min · ticket de sortie</span></div></div>
+      <div class="teacher"><strong>Guide PP — 2 min.</strong> Faire comparer le niveau de clarté initial et final sans chercher une hausse artificielle : une meilleure question est déjà un progrès. Le bilan peut nourrir la fiche de dialogue et le portfolio Avenir(s).<div class="mapping"><span>Se projeter</span><span>Réguler son projet</span><span>Conserver des traces</span></div></div>
+      <p><strong>Mon niveau de clarté maintenant :</strong></p>
+      <div class="pulse" id="clarityEnd" role="group" aria-label="Niveau de clarté final">
+        <button data-value="1"><strong>1</strong>Encore flou</button><button data-value="2"><strong>2</strong>Quelques indices</button><button data-value="3"><strong>3</strong>Des pistes</button><button data-value="4"><strong>4</strong>Plus structuré</button><button data-value="5"><strong>5</strong>Plan d’action clair</button>
+      </div>
+      <div class="field"><label for="exitLearning">Une méthode que je retiens pour m’orienter</label><input id="exitLearning" data-save placeholder="Vérifier la source, lire les critères, comparer avant d’exclure…"></div>
+      <div class="field"><label for="portfolioTrace">La trace que je veux conserver dans Avenir(s)</label><input id="portfolioTrace" data-save placeholder="Ma comparaison A/B, une question, mon prochain pas…"></div>
+      <div class="validation" id="v7"></div><button class="complete" data-complete="7">Générer ma feuille de route</button>
+      <div class="summary" id="summary"><h3>Ma feuille de route TG1 · Séance 1</h3><div class="summarygrid" id="summaryGrid"></div><div class="summaryactions"><button class="complete" id="downloadBtn">Télécharger mon bilan (.txt)</button><button class="secondary" id="printBtn">Imprimer / PDF</button><button class="danger" id="eraseBtn">Effacer cette session</button></div></div>
+      <details class="refs"><summary>Repères officiels utilisés pour construire cette séance</summary><div class="refsbody">
+        <div class="refitem"><strong>Éducation nationale — Plan Avenir / BO du 3 juillet 2025</strong><br>Orientation progressive, lutte contre les déterminismes, projet d’orientation d’établissement, Avenir(s) et quatre demi-journées annuelles.</div>
+        <div class="refitem"><strong>Onisep — Référentiel des compétences à s’orienter au lycée, version 2025</strong><br>15 compétences réparties en trois blocs : s’informer, se découvrir, se construire et se projeter.</div>
+        <div class="refitem"><strong>Parcoursup — fiches formation et critères d’analyse</strong><br>Statut, nature de la formation, critères, données d’accès, poursuites d’études, débouchés et contacts.</div>
+        <div class="sources"><a href="https://www.education.gouv.fr/bo/2025/Hebdo27/MENE2519127N" target="_blank" rel="noopener">↗ BO Plan Avenir</a><a href="https://www.onisep.fr/avenir-s/accompagner-les-eleves/ressources/encourager-vos-eleves-a-decouvrir-les-competences-a-s-orienter-et-du-xxi-siecle/le-referentiel-des-competences-a-s-orienter-au-lycee-version-actualisee" target="_blank" rel="noopener">↗ Référentiel Onisep</a><a href="https://www.parcoursup.gouv.fr/" target="_blank" rel="noopener">↗ Parcoursup</a></div>
+      </div></details>
+    </section>
+  </main>
+</div>
+
+<footer><div class="foot"><div><strong>Cap Post-Bac · TG1</strong><br>Support d’éducation à l’orientation. Il ne remplace ni le dialogue avec l’équipe éducative / Psy-EN, ni la consultation des sources officielles actualisées.</div><div class="footlinks"><a href="https://eduscol.education.gouv.fr/5400/l-orientation-du-lycee-vers-l-enseignement-superieur-et-parcoursup" target="_blank" rel="noopener">Éduscol</a><a href="https://avenirs.onisep.fr/" target="_blank" rel="noopener">Avenir(s)</a><a href="https://www.parcoursup.gouv.fr/" target="_blank" rel="noopener">Parcoursup</a></div></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var SESSION='postbac_tg1_v3_session', UI='postbac_tg1_v3_ui';
+function $(s){return document.querySelector(s)}function $$(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
+function parse(v,f){try{return JSON.parse(v)||f}catch(e){return f}}
+var state=Object.assign({clarityStart:null,clarityEnd:null,selected:{interests:[],conditions:[]},quiz:{},completed:[],remaining:3600},parse(sessionStorage.getItem(SESSION),{}));
+state.selected=Object.assign({interests:[],conditions:[]},state.selected||{});state.quiz=state.quiz||{};state.completed=state.completed||[];
+var ui=parse(localStorage.getItem(UI),{});
+function save(){try{sessionStorage.setItem(SESSION,JSON.stringify(state))}catch(e){}}
+function saveUI(){try{localStorage.setItem(UI,JSON.stringify(ui))}catch(e){}}
+function toast(msg){var t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},1900)}
+document.documentElement.dataset.theme=ui.theme||'dark';
+if(ui.teacher)document.body.classList.add('teacher-mode');if(ui.projection)document.body.classList.add('projection');
+$('#themeToggle').onclick=function(){ui.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=ui.theme;saveUI()};
+$('#teacherToggle').onclick=function(){document.body.classList.toggle('teacher-mode');ui.teacher=document.body.classList.contains('teacher-mode');saveUI();toast(ui.teacher?'Guide professeur affiché':'Guide professeur masqué')};
+$('#projectionToggle').onclick=function(){document.body.classList.toggle('projection');ui.projection=document.body.classList.contains('projection');saveUI()};
+
+$$('[data-save]').forEach(function(el){if(state[el.id]!=null)el.value=state[el.id];el.addEventListener('input',function(){state[el.id]=el.value;save()})});
+function bindPulse(id,key){var box=$(id);box.querySelectorAll('button').forEach(function(b){if(String(state[key])===b.dataset.value)b.classList.add('active');b.onclick=function(){box.querySelectorAll('button').forEach(function(x){x.classList.remove('active')});b.classList.add('active');state[key]=Number(b.dataset.value);save()}})}
+bindPulse('#clarityStart','clarityStart');bindPulse('#clarityEnd','clarityEnd');
+function bindPills(id,key){$(id).querySelectorAll('.pill').forEach(function(b){if(state.selected[key].indexOf(b.textContent)>=0)b.setAttribute('aria-pressed','true');else b.setAttribute('aria-pressed','false');b.onclick=function(){var on=b.getAttribute('aria-pressed')==='true';b.setAttribute('aria-pressed',on?'false':'true');var arr=state.selected[key];var text=b.textContent;if(on)state.selected[key]=arr.filter(function(x){return x!==text});else if(arr.indexOf(text)<0)arr.push(text);save()}})}
+bindPills('#interests','interests');bindPills('#conditions','conditions');
+
+$$('.quiz').forEach(function(q){var key=q.dataset.q, right=q.dataset.answer==='true',fb=q.querySelector('.feedback');q.querySelectorAll('[data-a]').forEach(function(b){if(state.quiz[key]===b.dataset.a)b.classList.add('sel');b.onclick=function(){q.querySelectorAll('[data-a]').forEach(function(x){x.classList.remove('sel')});b.classList.add('sel');state.quiz[key]=b.dataset.a;save();var ok=(b.dataset.a==='true')===right;fb.className='feedback show '+(ok?'ok':'no');if(key==='q1')fb.textContent=ok?'Exact : Parcoursup transmet les dossiers ; ce sont les formations qui examinent les candidatures selon leurs critères.':'À revoir : Parcoursup ne décide pas seul. Chaque formation examine les candidatures selon ses critères publiés.';if(key==='q2')fb.textContent=ok?'Exact : une statistique historique éclaire le contexte, elle ne prédit pas ton résultat individuel.':'À revoir : le taux d’accès ne doit pas être lu comme une probabilité personnelle.';if(key==='q3')fb.textContent=ok?'Exact : la rubrique « Comprendre les critères d’analyse des candidatures » détaille ce qui est regardé.':'Ces critères sont publiés sur la fiche de chaque formation.';if(key==='q4')fb.textContent=ok?'Exact : vérifier évite d’écarter une piste sur une impression ou un stéréotype.':'Avant d’exclure, documente les contraintes et les aides réelles.'}})});
+
+function val(n,msg){var v=$('#v'+n);v.textContent=msg||'';v.classList.toggle('show',!!msg)}
+function text(id){var e=$(id);return e?e.value.trim():''}
+function req(n){
+ if(n===1){if(!state.clarityStart)return 'Choisis ton niveau de clarté.';if(text('#startingPoint').length<8)return 'Écris une phrase sur ton point de départ.';if(text('#currentQuestion').length<5)return 'Formule au moins une question.'}
+ if(n===2){if(!state.selected.interests.length)return 'Choisis au moins un intérêt.';if(!state.selected.conditions.length)return 'Choisis au moins une condition de réussite.';if(text('#evidence').length<12||text('#skill').length<6)return 'Appuie-toi sur une expérience réelle et ce qu’elle révèle.'}
+ if(n===3){if(Object.keys(state.quiz).length<4)return 'Réponds aux quatre affirmations.';if(text('#stretchCheck').length<5)return 'Note ce que tu dois vérifier avant d’écarter une piste.'}
+ if(n===4){if(text('#formation').length<5||text('#nature').length<4||text('#criteria').length<8||text('#access').length<5||text('#cost').length<5||text('#sourceProof').length<5)return 'Ton enquête doit contenir au moins : formation, nature, critères, données d’accès, contraintes/coût et source datée.'}
+ if(n===5){if(text('#compareName').length<5||text('#compareConclusion').length<10)return 'Compare une vraie option B et formule ce qui fait la différence.'}
+ if(n===6){if(text('#nextAction').length<10||text('#helpPerson').length<4)return 'Transforme ta réflexion en une action précise et identifie une ressource ou une personne.'}
+ if(n===7){if(!state.clarityEnd)return 'Choisis ton niveau de clarté final.';if(text('#exitLearning').length<6)return 'Écris la méthode que tu veux retenir.'}
+ return '';
+}
+function progress(){for(var i=1;i<=7;i++)$('#step'+i).classList.toggle('done',state.completed.indexOf(i)>=0);var n=state.completed.length;$('#progressText').textContent=n+' / 7';$('#progressFill').style.width=(n/7*100)+'%'}
+progress();
+$$('[data-complete]').forEach(function(btn){btn.onclick=function(){var n=Number(btn.dataset.complete),m=req(n);val(n,m);if(m){toast('Encore un petit effort pour rendre cette étape exploitable');return}if(state.completed.indexOf(n)<0)state.completed.push(n);save();progress();if(n===7){makeSummary();$('#summary').classList.add('show');toast('Feuille de route prête')}else{toast('Étape validée');setTimeout(function(){$('#step'+(n+1)).scrollIntoView({behavior:'smooth',block:'start'})},220)}}});
+
+$$('#stepNav button').forEach(function(b){b.onclick=function(){$('#'+b.dataset.target).scrollIntoView({behavior:'smooth',block:'start'})}});
+var observer=new IntersectionObserver(function(entries){var v=entries.filter(function(e){return e.isIntersecting}).sort(function(a,b){return b.intersectionRatio-a.intersectionRatio})[0];if(!v)return;$$('#stepNav button').forEach(function(b){b.classList.toggle('active',b.dataset.target===v.target.id)})},{rootMargin:'-18% 0px -62% 0px',threshold:[0,.2,.5]});
+$$('.step').forEach(function(s){observer.observe(s)});
+
+function makeSummary(){
+ var start=state.clarityStart||'—',end=state.clarityEnd||'—';
+ var blocks=[
+  ['Point de départ',text('#startingPoint')||'—'],
+  ['Question centrale',text('#currentQuestion')||'—'],
+  ['Indices sur moi',(state.selected.interests.join(', ')||'—')+' · '+(state.selected.conditions.join(', ')||'—')],
+  ['Formation enquêtée',text('#formation')||'—'],
+  ['Ce que je dois encore vérifier',text('#openQuestion')||'—'],
+  ['Comparaison',text('#compareConclusion')||'—'],
+  ['Hypothèses',(text('#hypA')||'—')+' / '+(text('#hypB')||'—')],
+  ['Prochaine action',text('#nextAction')||'—'],
+  ['Ressource / personne',text('#helpPerson')||'—'],
+  ['Clarté','Début '+start+'/5 → fin '+end+'/5'],
+  ['Méthode retenue',text('#exitLearning')||'—']
+ ];
+ $('#summaryGrid').innerHTML=blocks.map(function(x){return '<div class="sblock"><strong>'+escapeHtml(x[0])+'</strong>'+escapeHtml(x[1])+'</div>'}).join('');
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+$('#downloadBtn').onclick=function(){makeSummary();var lines=['CAP POST-BAC · TG1 · SÉANCE 1','Lycée Watteau · Valenciennes','', 'Point de départ : '+text('#startingPoint'),'Question centrale : '+text('#currentQuestion'),'Intérêts : '+state.selected.interests.join(', '),'Conditions de réussite : '+state.selected.conditions.join(', '),'Formation enquêtée : '+text('#formation'),'Option B : '+text('#compareName'),'Hypothèse A : '+text('#hypA'),'Hypothèse B : '+text('#hypB'),'Action dans les 7 jours : '+text('#nextAction'),'Ressource/personne : '+text('#helpPerson'),'Méthode retenue : '+text('#exitLearning'),'','Clarté : '+(state.clarityStart||'—')+'/5 → '+(state.clarityEnd||'—')+'/5'];var blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='TG1_orientation_seance1_bilan.txt';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},1000)};
+$('#printBtn').onclick=function(){window.print()};
+$('#eraseBtn').onclick=function(){if(confirm('Effacer toutes les réponses de cette session ?')){sessionStorage.removeItem(SESSION);location.reload()}};
+
+var remaining=Number.isFinite(state.remaining)?state.remaining:3600,timer=null,running=false;
+function renderTimer(){var m=Math.floor(remaining/60),s=remaining%60;$('#timerDisplay').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');state.remaining=remaining;save()}
+function tick(){if(remaining<=0){clearInterval(timer);timer=null;running=false;$('#timerToggle').textContent='▶';toast('60 minutes écoulées');return}remaining--;renderTimer()}
+$('#timerToggle').onclick=function(){running=!running;this.textContent=running?'Ⅱ':'▶';if(running)timer=setInterval(tick,1000);else{clearInterval(timer);timer=null}};
+$('#timerReset').onclick=function(){clearInterval(timer);timer=null;running=false;remaining=3600;$('#timerToggle').textContent='▶';renderTimer()};
+renderTimer();
+if(state.completed.indexOf(7)>=0){makeSummary();$('#summary').classList.add('show')}
+})();
+</script>
+</body>
+</html>
