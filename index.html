@@ -700,6 +700,52 @@ html[data-theme="light"] .sidebar{background:#fff8ea;color:#173049}
   .hero-v5 .meta span{text-align:center}
 }
 
+
+/* =========================================================
+   V5.2 — FIDÉLITÉ DESKTOP APRÈS CAPTURE RÉELLE
+   ========================================================= */
+.hero-v5 h1 .hero-title-line{
+  color:#fff!important;
+  text-shadow:0 4px 0 rgba(0,0,0,.30),0 14px 28px rgba(0,0,0,.25)!important;
+}
+.hero-v5 h1 .hero-title-qcm{
+  color:var(--v5-gold)!important;
+  text-shadow:0 3px 0 #8d5907,0 10px 22px rgba(0,0,0,.30)!important;
+}
+
+@media(min-width:821px){
+  .hero-copy-v5{
+    width:39%;
+    padding-left:30px;
+    padding-right:4px;
+  }
+  .hero-v5 h1{
+    width:100%;
+    max-width:545px;
+    font-size:clamp(2.7rem,3.55vw,4.15rem);
+    line-height:.89;
+    margin:8px 0 12px;
+  }
+  .hero-title-line{white-space:nowrap}
+  .hero-title-qcm{margin-top:1px}
+  .hero-v5 .hero-lead{
+    max-width:500px;
+    font-size:clamp(.76rem,.82vw,.9rem);
+    line-height:1.42;
+  }
+  .hero-v5 .meta span{font-size:clamp(.56rem,.58vw,.66rem)}
+  .hero-v5 .hero-note{font-size:.65rem}
+}
+
+@media(min-width:1280px){
+  .hero-copy-v5{width:38.5%}
+  .hero-v5 h1{
+    max-width:535px;
+    font-size:clamp(3rem,3.45vw,4.15rem);
+  }
+  .hero-v5 .hero-lead{max-width:505px}
+}
+
 </style>
 </head>
 <body id="top">
