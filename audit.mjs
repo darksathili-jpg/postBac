@@ -59,10 +59,19 @@ if (!html.includes('sessionStorage')) fail('sessionStorage absent');
 if (!html.includes('Rien n’est envoyé à un serveur')) fail('information confidentialité absente');
 ok('confidentialité locale explicitée');
 
-if (!fs.existsSync('assets/hero-watteau.webp')) fail('asset hero V4 absent');
-const heroStat = fs.statSync('assets/hero-watteau.webp');
-if (heroStat.size < 40000) fail('asset hero V4 anormalement petit');
-if (!html.includes('assets/hero-watteau.webp')) fail('hero V4 non référencé dans index.html');
-ok('asset hero V4 présent et référencé');
+const visualAssets = [
+  ['assets/hero-desktop.png', 1000000],
+  ['assets/hero-mobile.png', 1000000],
+  ['assets/logo-watteau.png', 200000],
+  ['assets/parcours-sticker.png', 200000]
+];
+for (const [path, minSize] of visualAssets) {
+  if (!fs.existsSync(path)) fail('asset visuel absent: ' + path);
+  if (fs.statSync(path).size < minSize) fail('asset visuel anormalement petit: ' + path);
+  if (!html.includes(path)) fail('asset visuel non référencé dans index.html: ' + path);
+}
+if (html.includes("$('.site-nav a').forEach")) fail('sélecteur JS incorrect sur la navigation');
+if (html.includes("assets/hero-watteau.webp")) fail('ancien hero V4 encore référencé');
+ok('assets V5 présents, référencés et navigation JS cohérente');
 
 console.log('\nAudit statique terminé sans erreur.');
