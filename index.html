@@ -830,6 +830,23 @@ html[data-theme="light"] .site-nav a:focus-visible{
   border-radius:2px;
 }
 
+
+/* =========================================================
+   V5.5 — NETTOYAGE DU BAS DE SIDEBAR EN MODE CLAIR
+   Le motif angulaire sombre de .sidebar::after est décoratif :
+   sur fond crème il ressemble à un artefact derrière la carte Vie privée.
+   ========================================================= */
+html[data-theme="light"] .sidebar::after{
+  display:none;
+}
+html[data-theme="light"] .privacy{
+  position:relative;
+  z-index:4;
+  background:#f6ead1;
+  border-color:#c8a45c;
+  box-shadow:0 4px 12px rgba(66,43,14,.08);
+}
+
 </style>
 </head>
 <body id="top">
