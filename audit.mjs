@@ -60,8 +60,8 @@ if (!html.includes('Rien n’est envoyé à un serveur')) fail('information conf
 ok('confidentialité locale explicitée');
 
 const visualAssets = [
-  ['assets/hero-desktop.png', 1000000],
-  ['assets/hero-mobile.png', 1000000],
+  ['assets/hero-desktop.4b21e409.png', 1000000],
+  ['assets/hero-mobile.7474f557.png', 1000000],
   ['assets/logo-watteau.png', 200000],
   ['assets/parcours-sticker.png', 200000]
 ];
@@ -75,5 +75,13 @@ const navAll = html.match(/\$\$\('\.site-nav a'\)\.forEach/g) || [];
 if (navAll.length !== 2) fail('navigation V5: querySelectorAll attendu 2 fois, trouvé ' + navAll.length);
 if (html.includes("assets/hero-watteau.webp")) fail('ancien hero V4 encore référencé');
 ok('assets V5 présents, référencés et navigation JS cohérente');
+
+/* Asset identity / cache-busting gate */
+if (html.includes('assets/hero-desktop.png') || html.includes('assets/hero-mobile.png')) fail('anciens noms de hero non versionnés encore référencés');
+if ((html.match(/DES CHOIX/g) || []).length !== 1) fail('le slogan DES CHOIX doit exister une seule fois dans le DOM');
+if (html.includes('hero-slogan-clean')) fail('ancienne rustine hero-slogan-clean encore présente');
+if (!/\.hero-slogan-desktop\{display:none\}/.test(html)) fail('le slogan doit être masqué par défaut, donc absent sur mobile');
+if (!/@media\(min-width:821px\)[\s\S]*?\.hero-slogan-desktop\{[\s\S]*?display:block/.test(html)) fail('le slogan desktop doit être activé uniquement à partir de 821 px');
+ok('cache-busting hero, unicité du slogan et garde mobile vérifiés');
 
 console.log('\nAudit statique terminé sans erreur.');
