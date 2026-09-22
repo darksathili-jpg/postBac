@@ -803,6 +803,33 @@ html[data-theme="light"] .sidebar{background:#fff8ea;color:#173049}
   }
 }
 
+
+/* =========================================================
+   V5.4 — CONTRASTE NAVIGATION EN MODE CLAIR
+   Etat actif lisible sans dépendre du jaune sur fond crème.
+   ========================================================= */
+html[data-theme="light"] .site-nav a:hover{
+  color:#174469;
+}
+html[data-theme="light"] .site-nav a.active{
+  color:#8b1730;
+  font-weight:900;
+}
+html[data-theme="light"] .site-nav a:hover::after{
+  background:#c58a14;
+  box-shadow:0 0 8px rgba(197,138,20,.28);
+}
+html[data-theme="light"] .site-nav a.active::after{
+  background:#8b1730;
+  box-shadow:0 0 8px rgba(139,23,48,.22);
+}
+html[data-theme="light"] .site-nav a:focus-visible{
+  color:#8b1730;
+  outline:2px solid #c58a14;
+  outline-offset:5px;
+  border-radius:2px;
+}
+
 </style>
 </head>
 <body id="top">
