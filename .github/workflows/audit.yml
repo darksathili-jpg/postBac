@@ -6,7 +6,7 @@ on:
   pull_request:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   audit:
@@ -14,31 +14,9 @@ jobs:
     steps:
       - name: Récupérer le dépôt
         uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
       - name: Configurer Node
         uses: actions/setup-node@v5
         with:
           node-version: 22
       - name: Vérifier la page
         run: node audit.mjs
-      - name: Intégrer V5.9 si nécessaire
-        if: github.event_name == 'push'
-        run: python .github/scripts/v59_global_balance.py
-      - name: Vérifier V5.9
-        if: github.event_name == 'push'
-        run: |
-          grep -q 'V5.9 — GLOBAL VISUAL BALANCE' index.html
-          grep -q 'html\[data-theme="light"\] .step:not(.step-one)' index.html
-          grep -q 'html\[data-theme="light"\] .card' index.html
-          grep -q '.step{margin-bottom:18px}' index.html
-      - name: Commit V5.9 si nécessaire
-        if: github.event_name == 'push'
-        shell: bash
-        run: |
-          if git diff --quiet -- index.html; then exit 0; fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add index.html
-          git commit -m 'V5.9 : rééquilibre la page hors hero et fiabilise le mode clair'
-          git push
