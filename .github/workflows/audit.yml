@@ -6,7 +6,7 @@ on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   audit:
@@ -14,9 +14,33 @@ jobs:
     steps:
       - name: Récupérer le dépôt
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       - name: Configurer Node
         uses: actions/setup-node@v5
         with:
           node-version: 22
       - name: Vérifier la page
         run: node audit.mjs
+      - name: Intégrer V5.8 si nécessaire
+        if: github.event_name == 'push'
+        run: python .github/scripts/v58_mobile_sidebar_balance.py
+      - name: Vérifier V5.8
+        if: github.event_name == 'push'
+        run: |
+          grep -q 'V5.8 — MOBILE SIDEBAR MARK BALANCE' index.html
+          grep -q 'padding-right:76px' index.html
+          grep -q 'padding-right:58px' index.html
+      - name: Commit V5.8 si nécessaire
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          if git diff --quiet -- index.html; then
+            echo 'No V5.8 change to commit.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git commit -m 'V5.8 : équilibre le mark Watteau dans la sidebar mobile'
+          git push
