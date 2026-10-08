@@ -103,4 +103,18 @@ if (!html.includes("document.title='Cap Post-Bac · '+config.className")) fail('
 if (!html.includes("a.download=config.className+'_orientation_seance1_bilan.txt'")) fail('nom de bilan non dynamique');
 ok('configuration TG1–TG8, professeur, groupe, lien partagé et sessions isolées vérifiés');
 
+const selectorOne = "function $(s){return document.querySelector(s)}";
+const selectorAll = "function " + '
+ + '
+ + "(s){return Array.prototype.slice.call(document.querySelectorAll(s))}";
+if (!html.includes(selectorOne) || !html.includes(selectorAll)) fail('helpers $ / $ incorrects');
+if ((html.match(/function \$\(s\)/g) || []).length !== 1) fail('helper $ défini plusieurs fois');
+if (!html.includes("var interestAllowed=" + '
+ + '
+ + "('#interests .pill').map(")) fail('querySelectorAll manquant pour les intérêts');
+if (!html.includes("var conditionAllowed=" + '
+ + '
+ + "('#conditions .pill').map(")) fail('querySelectorAll manquant pour les conditions');
+ok('helpers DOM $ / $ et sélecteurs multiples vérifiés');
+
 console.log('\nAudit statique terminé sans erreur.');
