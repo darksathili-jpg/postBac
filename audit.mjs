@@ -70,9 +70,9 @@ for (const [path, minSize] of visualAssets) {
   if (fs.statSync(path).size < minSize) fail('asset visuel anormalement petit: ' + path);
   if (!html.includes(path)) fail('asset visuel non référencé dans index.html: ' + path);
 }
-if (/(?<!\$)\$\('\.site-nav a'\)\.forEach/.test(html)) fail('sélecteur JS incorrect sur la navigation');
-const navAll = html.match(/\$\$\('\.site-nav a'\)\.forEach/g) || [];
-if (navAll.length !== 2) fail('navigation V5: querySelectorAll attendu 2 fois, trouvé ' + navAll.length);
+if (/\$\('\.site-nav a'\)\.forEach/.test(html)) fail('sélecteur JS incorrect sur la navigation');
+const navAll = html.match(/all\('\.site-nav a'\)\.forEach/g) || [];
+if (navAll.length !== 2) fail('navigation V5: helper all() attendu 2 fois, trouvé ' + navAll.length);
 if (html.includes("assets/hero-watteau.webp")) fail('ancien hero V4 encore référencé');
 ok('assets V5 présents, référencés et navigation JS cohérente');
 
@@ -103,18 +103,16 @@ if (!html.includes("document.title='Cap Post-Bac · '+config.className")) fail('
 if (!html.includes("a.download=config.className+'_orientation_seance1_bilan.txt'")) fail('nom de bilan non dynamique');
 ok('configuration TG1–TG8, professeur, groupe, lien partagé et sessions isolées vérifiés');
 
+
 const selectorOne = "function $(s){return document.querySelector(s)}";
-const selectorAll = "function " + '
- + '
- + "(s){return Array.prototype.slice.call(document.querySelectorAll(s))}";
-if (!html.includes(selectorOne) || !html.includes(selectorAll)) fail('helpers $ / $ incorrects');
+const selectorAll = "function all(s){return Array.prototype.slice.call(document.querySelectorAll(s))}";
+if (!html.includes(selectorOne) || !html.includes(selectorAll)) fail('helpers DOM $ / all incorrects');
 if ((html.match(/function \$\(s\)/g) || []).length !== 1) fail('helper $ défini plusieurs fois');
-if (!html.includes("var interestAllowed=" + '
- + '
- + "('#interests .pill').map(")) fail('querySelectorAll manquant pour les intérêts');
-if (!html.includes("var conditionAllowed=" + '
- + '
- + "('#conditions .pill').map(")) fail('querySelectorAll manquant pour les conditions');
-ok('helpers DOM $ / $ et sélecteurs multiples vérifiés');
+if ((html.match(/function all\(s\)/g) || []).length !== 1) fail('helper all défini un nombre incorrect de fois');
+if (/\$\([^\n;]+\)\.(?:forEach|map)\(/.test(html)) fail('querySelector simple utilisé avec forEach/map');
+if (!html.includes("var interestAllowed=all('#interests .pill').map(")) fail('sélecteur multiple intérêts incorrect');
+if (!html.includes("var conditionAllowed=all('#conditions .pill').map(")) fail('sélecteur multiple conditions incorrect');
+if (!html.includes("all('[data-save]').forEach(function(el)")) fail('réhydratation des champs non basée sur all()');
+ok('helpers DOM $ / all et sélecteurs multiples vérifiés');
 
 console.log('\nAudit statique terminé sans erreur.');
