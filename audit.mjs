@@ -92,4 +92,15 @@ if (/if\(text\('#currentQuestion'\)\.length/.test(html)) fail('la question facul
 if (!html.includes('sessionStorage.setItem(RESUME') || !html.includes('firstIncomplete(restored)')) fail('reprise automatique à la première étape incomplète absente');
 ok('sauvegarde JSON portable, import validé et reprise automatique présents');
 
+if (!html.includes('id="configToggle"') || !html.includes('id="configDialog"') || !html.includes('id="configClass"')) fail('interface de configuration classe/PP absente');
+for (const tg of ['TG1','TG2','TG3','TG4','TG5','TG6','TG7','TG8']) if (!html.includes('<option>'+tg+'</option>')) fail('classe absente du sélecteur: '+tg);
+if (!html.includes("CONFIG='postbac_config_v1'") || !html.includes("function cleanConfig(raw)")) fail('persistance/validation de la configuration absente');
+if (!html.includes("searchParams.set('classe'") || !html.includes("searchParams.set('pp'")) fail('lien partagé configurable absent');
+if (!html.includes("function sessionKey(c)") || !html.includes("'postbac_orientation_v1_'")) fail('sessions non isolées par classe');
+if (!html.includes("application:'cap-post-bac'") || !html.includes('context:config')) fail('export JSON non généralisé avec contexte');
+if (!html.includes("payload.application!=='cap-post-bac'&&payload.application!=='cap-post-bac-tg1'")) fail('compatibilité import JSON ancien/nouveau absente');
+if (!html.includes("document.title='Cap Post-Bac · '+config.className")) fail('titre dynamique absent');
+if (!html.includes("a.download=config.className+'_orientation_seance1_bilan.txt'")) fail('nom de bilan non dynamique');
+ok('configuration TG1–TG8, professeur, groupe, lien partagé et sessions isolées vérifiés');
+
 console.log('\nAudit statique terminé sans erreur.');
