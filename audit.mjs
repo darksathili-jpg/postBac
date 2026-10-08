@@ -85,7 +85,7 @@ if (!/@media\(min-width:821px\)[\s\S]*?\.hero-slogan-desktop\{[\s\S]*?display:bl
 ok('cache-busting hero, unicité du slogan et garde mobile vérifiés');
 
 if (!html.includes('id="exportProgressBtn"') || !html.includes('id="importProgressBtn"') || !html.includes('id="progressFileInput"')) fail('commandes sauvegarde/reprise JSON absentes');
-if (!html.includes("application:'cap-post-bac-tg1'") || !html.includes('formatVersion:EXPORT_VERSION')) fail('enveloppe JSON versionnée absente');
+if (!html.includes("application:'cap-post-bac'") || !html.includes('formatVersion:EXPORT_VERSION')) fail('enveloppe JSON versionnée absente');
 if (!html.includes('cleanImportedState') || !html.includes('512*1024')) fail('validation défensive de l’import JSON absente');
 if (!html.includes("accept=\".json,application/json\"")) fail('sélecteur de fichier JSON non contraint');
 if (/if\(text\('#currentQuestion'\)\.length/.test(html)) fail('la question facultative bloque encore la validation');
