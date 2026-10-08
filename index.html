@@ -1548,7 +1548,7 @@ function renderQuizFeedback(key,right,fb){
   if(key==='q3')fb.textContent=ok?'Exact : la rubrique « Comprendre les critères d’analyse des candidatures » détaille ce qui est regardé.':'Ces critères sont publiés sur la fiche de chaque formation.';
   if(key==='q4')fb.textContent=ok?'Exact : vérifier évite d’écarter une piste sur une impression ou un stéréotype.':'Avant d’exclure, documente les contraintes et les aides réelles.';
 }
-$('.quiz').forEach(function(q){
+all('.quiz').forEach(function(q){
   var key=q.dataset.q,right=q.dataset.answer==='true',fb=q.querySelector('.feedback');
   q.querySelectorAll('[data-a]').forEach(function(b){
     if(state.quiz[key]===b.dataset.a)b.classList.add('sel');
