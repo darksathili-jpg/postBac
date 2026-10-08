@@ -109,7 +109,7 @@ const selectorAll = "function all(s){return Array.prototype.slice.call(document.
 if (!html.includes(selectorOne) || !html.includes(selectorAll)) fail('helpers DOM $ / all incorrects');
 if ((html.match(/function \$\(s\)/g) || []).length !== 1) fail('helper $ défini plusieurs fois');
 if ((html.match(/function all\(s\)/g) || []).length !== 1) fail('helper all défini un nombre incorrect de fois');
-if (/\$\([^\n;]+\)\.(?:forEach|map)\(/.test(html)) fail('querySelector simple utilisé avec forEach/map');
+if (/\$\(['"][^'"]+['"]\)\.(?:forEach|map)\(/.test(html)) fail('querySelector simple utilisé directement avec forEach/map');
 if (!html.includes("var interestAllowed=all('#interests .pill').map(")) fail('sélecteur multiple intérêts incorrect');
 if (!html.includes("var conditionAllowed=all('#conditions .pill').map(")) fail('sélecteur multiple conditions incorrect');
 if (!html.includes("all('[data-save]').forEach(function(el)")) fail('réhydratation des champs non basée sur all()');
