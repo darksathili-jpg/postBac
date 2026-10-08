@@ -84,4 +84,12 @@ if (!/\.hero-slogan-desktop\{display:none\}/.test(html)) fail('le slogan doit ê
 if (!/@media\(min-width:821px\)[\s\S]*?\.hero-slogan-desktop\{[\s\S]*?display:block/.test(html)) fail('le slogan desktop doit être activé uniquement à partir de 821 px');
 ok('cache-busting hero, unicité du slogan et garde mobile vérifiés');
 
+if (!html.includes('id="exportProgressBtn"') || !html.includes('id="importProgressBtn"') || !html.includes('id="progressFileInput"')) fail('commandes sauvegarde/reprise JSON absentes');
+if (!html.includes("application:'cap-post-bac-tg1'") || !html.includes('formatVersion:EXPORT_VERSION')) fail('enveloppe JSON versionnée absente');
+if (!html.includes('cleanImportedState') || !html.includes('512*1024')) fail('validation défensive de l’import JSON absente');
+if (!html.includes("accept=\".json,application/json\"")) fail('sélecteur de fichier JSON non contraint');
+if (/if\(text\('#currentQuestion'\)\.length/.test(html)) fail('la question facultative bloque encore la validation');
+if (!html.includes('sessionStorage.setItem(RESUME') || !html.includes('firstIncomplete(restored)')) fail('reprise automatique à la première étape incomplète absente');
+ok('sauvegarde JSON portable, import validé et reprise automatique présents');
+
 console.log('\nAudit statique terminé sans erreur.');
